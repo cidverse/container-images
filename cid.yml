@@ -1,0 +1,10 @@
+# customize actions
+actions:
+  package:
+    - name: container-package-buildah
+      type: builtin
+      scope: module
+      config:
+        no-cache: true
+        squash: true
+        rebuild: false
