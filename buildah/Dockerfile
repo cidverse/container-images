@@ -2,7 +2,7 @@
 # image=quay.io/cidverse/buildah
 
 # renovate: datasource=github-releases depName=containers/buildah
-ARG BUILDAH_VERSION=1.26.0
+ARG BUILDAH_VERSION=1.26.2
 
 # runtime image
 #
