@@ -4,7 +4,7 @@
 
 # compile the twitch cli binary
 # 
-FROM registry.hub.docker.com/library/golang:1.17
+FROM registry.hub.docker.com/library/golang:1.18
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
 ARG TWITCHCLI_VERSION=1.1.6
