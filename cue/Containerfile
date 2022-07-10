@@ -1,0 +1,26 @@
+# syntax=docker.io/docker/dockerfile:1.3
+# image=quay.io/cidverse/cue
+
+# build binary
+# 
+FROM quay.io/cidverse/common-build:latest
+
+# renovate: datasource=github-releases depName=cue-lang/cue
+ARG CUE_VERSION=0.4.3
+ARG TARGETOS
+ARG TARGETARCH
+
+RUN mkdir -p /cache \
+&&  curl -L -o /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz https://github.com/cue-lang/cue/releases/download/v${CUE_VERSION}/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz \
+&&  tar -xzf /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz -C /tmp \
+&&  cp /tmp/cue /usr/local/bin/cue \
+&&  rm -rf /tmp/*
+
+# runtime image
+#
+FROM quay.io/cidverse/common-micro:latest
+
+COPY --from=0 /usr/local/bin/cue /usr/local/bin/cue
+
+USER 1001
+CMD ["cue"]

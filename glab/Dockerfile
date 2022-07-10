@@ -3,15 +3,14 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/common-build:latest
 
 # renovate: datasource=github-releases depName=profclems/glab
 ARG GLAB_VERSION=1.22.0
 ARG TARGETOS
 ARG TARGETARCH
 
-RUN microdnf install -y tar gzip \
-&&  mkdir -p /tmp/download /tmp/glab \
+RUN mkdir -p /tmp/download /tmp/glab \
 &&  curl -L -o /tmp/download/glab-${GLAB_VERSION}.tar.gz https://github.com/profclems/glab/releases/download/v${GLAB_VERSION}/glab_${GLAB_VERSION}_Linux_x86_64.tar.gz \
 &&  tar -xzf /tmp/download/glab-${GLAB_VERSION}.tar.gz -C /tmp/glab \
 &&  cp /tmp/glab/bin/glab /usr/local/bin/glab
