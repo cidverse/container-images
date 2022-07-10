@@ -4,7 +4,7 @@
 
 # compile the twitch cli binary
 # 
-FROM registry.hub.docker.com/library/golang:1.17
+FROM registry.hub.docker.com/library/golang:1.18
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
 ARG TWITCHCLI_VERSION=1.1.6
@@ -12,13 +12,14 @@ ARG TARGETOS
 ARG TARGETARCH
 
 RUN apt-get update \
-&&  apt-get install -y curl unzip \
+&&  apt-get install -y --no-install-recommends curl unzip \
 &&  mkdir -p /tmp/download \
 &&  curl -L -o /tmp/download/twitchcli-${TWITCHCLI_VERSION}.zip https://github.com/twitchdev/twitch-cli/archive/refs/tags/v${TWITCHCLI_VERSION}.zip \
 &&  unzip /tmp/download/twitchcli-${TWITCHCLI_VERSION}.zip -d /tmp/twitchcli-src \
 &&  cd /tmp/twitchcli-src/twitch-cli-${TWITCHCLI_VERSION} \
 &&  go install src.techknowlogick.com/xgo@latest \
-&&  CGO_ENABLED=1 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /usr/local/bin/twitch -ldflags "-s -w -X main.buildVersion=${TWITCHCLI_VERSION}" .
+&&  CGO_ENABLED=1 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /usr/local/bin/twitch -ldflags "-s -w -X main.buildVersion=${TWITCHCLI_VERSION}" . \
+&&  rm -rf /var/lib/apt/lists/*
 
 # runtime image
 #

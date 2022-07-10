@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1.3
 # image=quay.io/cidverse/glab
 
-# compile the twitch cli binary
+# build binary
 # 
 FROM quay.io/cidverse/common-minimal:latest
 

@@ -1,14 +1,48 @@
 # syntax=docker.io/docker/dockerfile:1.3
 # image=quay.io/cidverse/buildah
 
-# renovate: datasource=github-releases depName=containers/buildah
-ARG BUILDAH_VERSION=1.26.0
+# compile buildah from source
+# 
+FROM quay.io/cidverse/common-minimal:latest
 
-# runtime image
+# renovate: datasource=github-releases depName=containers/buildah
+ARG BUILDAH_VERSION=1.26.2
+
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
+&&  microdnf install -y containers-common device-mapper-devel golang gpgme-devel libassuan-devel libseccomp-devel make runc glibc-static git \
+&&  mkdir -p /go/src/github.com/containers \
+&&  git clone --depth 1 --branch v${BUILDAH_VERSION} https://github.com/containers/buildah.git /go/src/github.com/containers/buildah \
+&&  cd /go/src/github.com/containers/buildah \
+&&  env GOPATH=/go make -C /go/src/github.com/containers/buildah clean all install
+
+# config source
 #
 FROM quay.io/buildah/stable:v1.26.0
 
-ADD script/buildah-script /usr/local/bin/buildah-script
+# runtime image
+#
+FROM quay.io/cidverse/common-minimal:latest
 
+COPY --from=0 /usr/local/bin/buildah /usr/local/bin/buildah
+COPY --from=1 /etc/containers /etc/containers
+
+# containers-common runc
+RUN microdnf install -y fuse-overlayfs \
+&&  sed -i -r -e 's,driver = ".*",driver = "vfs",g' /etc/containers/storage.conf \
+&&  mkdir -p /var/lib/shared/overlay-images /var/lib/shared/overlay-layers /var/lib/shared/vfs-images /var/lib/shared/vfs-layers \
+&&  touch /var/lib/shared/overlay-images/images.lock \
+&&  touch /var/lib/shared/overlay-layers/layers.lock \
+&&  touch /var/lib/shared/vfs-images/images.lock \
+&&  touch /var/lib/shared/vfs-layers/layers.lock
+
+# uid/gid ranges for the user - https://github.com/containers/buildah/issues/3053
+RUN echo -e "app:1:999\app:1001:64535" > /etc/subuid \
+&&  echo -e "app:1:999\app:1001:64535" > /etc/subgid \
+&&  mkdir -p /app/.local/share/containers \
+&&  chmod -R 777 /etc/containers
+ENV BUILDAH_ISOLATION chroot
+
+VOLUME /var/lib/containers
+VOLUME /app/.local/share/containers
 USER 1001
 CMD ["buildah"]

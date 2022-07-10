@@ -4,7 +4,6 @@
 # runtime image
 #
 FROM quay.io/cidverse/common-minimal:latest
-ENV HOME=/app
 
 ARG TARGETOS
 ARG TARGETARCH
