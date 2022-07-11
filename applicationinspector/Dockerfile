@@ -9,11 +9,10 @@ ENV PATH="${PATH}:/app/.dotnet/tools"
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.5.13
 
-RUN --mount=type=cache,target=/root/.local/share/NuGet/v3-cache \
-    microdnf install dotnet-sdk-6.0 \
+RUN microdnf install -y dotnet-sdk-6.0 \
 &&  dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION} \
-&&  microdnf remove dotnet-sdk-6.0 \
-&&  microdnf install dotnet-runtime-6.0
+&&  microdnf remove -y dotnet-sdk-6.0 \
+&&  microdnf install -y dotnet-runtime-6.0
 
 USER 1001
 CMD ["appinspector"]

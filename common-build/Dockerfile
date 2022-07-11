@@ -6,4 +6,8 @@
 #
 FROM quay.io/cidverse/common-minimal:latest
 
-RUN microdnf install -y tar xz gzip unzip && microdnf clean all
+ADD scripts/* /usr/local/bin
+
+RUN microdnf install -y tar xz gzip unzip git gpg \
+&&  microdnf clean all \
+&&  mkdir -p /cache
