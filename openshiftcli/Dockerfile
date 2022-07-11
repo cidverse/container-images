@@ -11,11 +11,9 @@ ARG OPENSHIFT_VERSION=3.11.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-RUN microdnf install -y jq \
-&&  mkdir -p /cache \
-&&  downloadUrl=$(curl -s https://api.github.com/repos/openshift/origin/releases/tags/v${OPENSHIFT_VERSION} | jq -r '.assets[] | select((.name | contains("openshift-origin-client-tools")) and (.name | contains ("linux-64bit"))) | .browser_download_url') \
-&&  curl -L -o /cache/oc-client-tools-${OPENSHIFT_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz $downloadUrl \
-&&  tar xzvf /cache/oc-client-tools-${OPENSHIFT_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz -C /tmp/ \
+RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/origin/releases/tags/v${OPENSHIFT_VERSION} | jq -r '.assets[] | select((.name | contains("openshift-origin-client-tools")) and (.name | contains ("linux-64bit"))) | .browser_download_url') \
+&&  cidverse-download "oc-${OPENSHIFT_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "$DL_URL" \
+&&  tar xzvf "/cache/oc-${OPENSHIFT_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" -C /tmp/ \
 &&  mv /tmp/openshift-origin-client-tools-v${OPENSHIFT_VERSION}-*/oc /usr/local/bin
 
 # runtime image
