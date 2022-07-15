@@ -7,7 +7,7 @@
 FROM quay.io/cidverse/common-build:latest
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG K8S_VERSION=1.24.2
+ARG K8S_VERSION=1.24.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
