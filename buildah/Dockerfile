@@ -17,7 +17,7 @@ RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.
 
 # config source
 #
-FROM quay.io/buildah/stable:v1.26.0
+FROM quay.io/buildah/stable:v1.26.1
 
 # runtime image
 #
