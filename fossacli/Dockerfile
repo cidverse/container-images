@@ -8,7 +8,7 @@ FROM quay.io/cidverse/common-minimal:latest
 ARG TARGETOS
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=fossas/fossa-cli
-ARG FOSSACLI_VERSION=3.3.9
+ARG FOSSACLI_VERSION=3.3.11
 
 RUN microdnf install -y java-11-openjdk unzip \
 &&  curl -H 'Cache-Control: no-cache' -L -o /tmp/fossa.zip https://github.com/fossas/fossa-cli/releases/download/v${FOSSACLI_VERSION}/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zip \
