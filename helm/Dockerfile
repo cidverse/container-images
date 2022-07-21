@@ -7,7 +7,7 @@
 FROM quay.io/cidverse/common-build:latest
 
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION=3.9.1
+ARG HELM_VERSION=3.9.2
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
