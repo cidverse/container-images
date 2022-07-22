@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/common-minimal:latest
 
 # renovate: datasource=github-releases depName=sigstore/cosign
-ARG COSIGN_VERSION=1.9.0
+ARG COSIGN_VERSION=1.10.0
 ARG TARGETOS
 ARG TARGETARCH
 
