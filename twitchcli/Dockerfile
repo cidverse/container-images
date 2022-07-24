@@ -4,7 +4,7 @@
 
 # compile the twitch cli binary
 # 
-FROM registry.hub.docker.com/library/golang:1.18
+FROM registry.hub.docker.com/library/golang:1.18 AS builder
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
 ARG TWITCHCLI_VERSION=1.1.6
@@ -24,7 +24,7 @@ RUN apt-get update \
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/twitch /usr/local/bin/twitch
+COPY --from=builder /usr/local/bin/twitch /usr/local/bin/twitch
 RUN twitch mock-api generate -c 15
 
 USER 1001

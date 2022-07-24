@@ -3,7 +3,7 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=cue-lang/cue
 ARG CUE_VERSION=0.4.3
@@ -20,7 +20,7 @@ RUN mkdir -p /cache \
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/cue /usr/local/bin/cue
+COPY --from=builder /usr/local/bin/cue /usr/local/bin/cue
 
 USER 1001
 CMD ["cue"]

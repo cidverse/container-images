@@ -4,7 +4,7 @@
 
 # build / download
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG K8S_VERSION=1.24.3
@@ -20,7 +20,7 @@ FROM quay.io/cidverse/common-micro:latest
 
 RUN mkdir -p /app/.kube
 ADD entrypoint.sh /app/entrypoint.sh
-COPY --from=0 /usr/local/bin/kubectl /usr/local/bin/kubectl
+COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 
 USER 1001
 ENTRYPOINT [ "/app/entrypoint.sh" ]

@@ -3,7 +3,7 @@
 
 # compile buildah from source
 # 
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/common-minimal:latest AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.26.2
@@ -17,14 +17,14 @@ RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.
 
 # config source
 #
-FROM quay.io/buildah/stable:v1.26.2
+FROM quay.io/buildah/stable:v1.26.2 AS config
 
 # runtime image
 #
 FROM quay.io/cidverse/common-minimal:latest
 
-COPY --from=0 /usr/local/bin/buildah /usr/local/bin/buildah
-COPY --from=1 /etc/containers /etc/containers
+COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
+COPY --from=config /etc/containers /etc/containers
 
 # containers-common runc
 RUN microdnf install -y fuse-overlayfs \

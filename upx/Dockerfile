@@ -4,7 +4,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=upx/upx
 ARG UPX_VERSION=3.96
@@ -19,7 +19,7 @@ RUN curl -L -o /tmp/upx-${UPX_VERSION}.tar.gz https://github.com/upx/upx/release
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/upx /usr/local/bin/upx
+COPY --from=builder /usr/local/bin/upx /usr/local/bin/upx
 
 USER 1001
 CMD ["upx"]

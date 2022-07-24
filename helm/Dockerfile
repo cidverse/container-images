@@ -4,7 +4,7 @@
 
 # build / download
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=3.9.2
@@ -23,7 +23,7 @@ RUN curl https://get.helm.sh/KEYS | gpg --import \
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/helm /usr/local/bin/helm
+COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 
 RUN mkdir -p /app/.kube
 

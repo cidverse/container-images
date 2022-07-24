@@ -4,7 +4,7 @@
 
 # build / download
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=openshift/okd
 ARG OPENSHIFT_VERSION=4.10.0-0.okd-2022-07-09-073606
@@ -20,7 +20,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/okd/releases/
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/oc /usr/local/bin/oc
+COPY --from=builder /usr/local/bin/oc /usr/local/bin/oc
 
 USER 1001
 CMD ["oc"]

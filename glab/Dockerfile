@@ -3,7 +3,7 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=profclems/glab
 ARG GLAB_VERSION=1.22.0
@@ -19,7 +19,7 @@ RUN mkdir -p /tmp/download /tmp/glab \
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/glab /usr/local/bin/glab
+COPY --from=builder /usr/local/bin/glab /usr/local/bin/glab
 
 USER 1001
 CMD ["glab"]

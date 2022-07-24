@@ -4,7 +4,7 @@
 
 # compile the twitch cli binary
 #
-FROM registry.hub.docker.com/library/golang:1.18
+FROM registry.hub.docker.com/library/golang:1.18 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
 ARG GITHUBCLI_VERSION=2.14.2
@@ -21,7 +21,7 @@ RUN apt-get update \
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/gh /usr/local/bin/gh
+COPY --from=builder /usr/local/bin/gh /usr/local/bin/gh
 
 USER 1001
 CMD ["gh"]

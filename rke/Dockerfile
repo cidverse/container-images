@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=rancher/rke
 ARG RKE_VERSION=1.3.12
@@ -16,7 +16,7 @@ RUN curl -L --output /usr/local/bin/rke https://github.com/rancher/rke/releases/
 #
 FROM quay.io/cidverse/common-micro:latest
 
-COPY --from=0 /usr/local/bin/rke /usr/local/bin/rke
+COPY --from=builder /usr/local/bin/rke /usr/local/bin/rke
 
 USER 1001
 CMD ["rke"]

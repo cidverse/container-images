@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/common-build:latest
+FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=SonarSource/sonar-scanner-cli
 ARG SONARSCANNERCLI_VERSION=4.7.0.2747
@@ -20,7 +20,7 @@ ENV PATH="${PATH}:/app/sonarscanner/bin" \
     JAVA_HOME=/usr/lib/jvm/jre-11-openjdk
 
 RUN microdnf install -y zlib.i686 git python3 java-11-openjdk
-COPY --from=0 /app/sonarscanner /app/sonarscanner
+COPY --from=builder /app/sonarscanner /app/sonarscanner
 
 USER 1001
 CMD ["sonar-scanner"]
