@@ -25,6 +25,7 @@ FROM quay.io/cidverse/common-minimal:latest
 
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
 COPY --from=config /etc/containers /etc/containers
+ADD script/buildah-script /usr/local/bin/buildah-script
 
 # containers-common runc
 RUN microdnf install -y fuse-overlayfs \
@@ -36,13 +37,13 @@ RUN microdnf install -y fuse-overlayfs \
 &&  touch /var/lib/shared/vfs-layers/layers.lock
 
 # uid/gid ranges for the user - https://github.com/containers/buildah/issues/3053
-RUN echo -e "app:1:999\app:1001:64535" > /etc/subuid \
-&&  echo -e "app:1:999\app:1001:64535" > /etc/subgid \
-&&  mkdir -p /app/.local/share/containers \
-&&  chmod -R 777 /etc/containers
+RUN echo -e "app:1:999\napp:1001:64535" > /etc/subuid \
+&&  echo -e "app:1:999\napp:1001:64535" > /etc/subgid \
+&&  mkdir -p /app/.local/share/containers /app/.config \
+&&  chmod -R 777 /etc/containers /app/.config /app/.local/share/containers
 ENV BUILDAH_ISOLATION chroot
 
 VOLUME /var/lib/containers
 VOLUME /app/.local/share/containers
-USER 1001
+USER root
 CMD ["buildah"]
