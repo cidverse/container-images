@@ -15,9 +15,11 @@ RUN mkdir -p /cache /app/sonarscanner \
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
-ENV PATH="${PATH}:/app/sonarscanner/bin"
+FROM quay.io/cidverse/common-minimal:latest
+ENV PATH="${PATH}:/app/sonarscanner/bin" \
+    JAVA_HOME=/usr/lib/jvm/jre-11-openjdk
 
+RUN microdnf install -y zlib.i686 git python3 java-11-openjdk
 COPY --from=0 /app/sonarscanner /app/sonarscanner
 
 USER 1001
