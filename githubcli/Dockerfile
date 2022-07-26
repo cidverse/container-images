@@ -7,7 +7,7 @@
 FROM registry.hub.docker.com/library/golang:1.18 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
-ARG GITHUBCLI_VERSION=2.14.2
+ARG GITHUBCLI_VERSION=2.14.3
 
 RUN apt-get update \
 &&  apt-get install -y unzip \
