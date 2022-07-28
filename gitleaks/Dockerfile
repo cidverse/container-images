@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=8.8.12
+ARG GITLEAKS_VERSION=8.9.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
