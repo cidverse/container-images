@@ -4,13 +4,17 @@
 # upstream
 FROM registry.access.redhat.com/ubi9-micro:9.0.0-14 AS ubi
 
+# upstream
+FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS minimal
+
 # image
 FROM scratch
 COPY --from=ubi / /
+COPY --from=minimal /etc/pki/ca-trust /etc/pki/ca-trust
 
 # configuration
 ENV HOME=/app
-RUN mkdir -p /app \
+RUN mkdir -p /app /cache \
 &&  chgrp -R 0 /app \
 &&  chmod -R g=u /app
 CMD /bin/bash

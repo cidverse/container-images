@@ -7,11 +7,13 @@ FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS ubi
 # image
 FROM scratch
 COPY --from=ubi / /
+ADD scripts/* /usr/local/bin
+ADD config/dnf.conf /etc/dnf/dnf.conf
 
 # configuration
 ENV HOME=/app
 RUN useradd -u 1001 app --no-create-home --home-dir /app \
-&&  mkdir -p /app \
+&&  mkdir -p /app /cache \
 &&  chgrp -R 0 /app \
 &&  chmod -R g=u /app
 CMD /bin/bash

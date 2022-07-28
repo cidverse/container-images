@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
 set -e
 
-mkdir -p /cache
-
 # download, if file is missing
-if [[ -f "/cache/$1" ]]; then
-    echo "> using cache: /cache/$1"
+if [[ -f "$1" ]]; then
+    echo "> using cache: $1"
 else
     echo "> download: $2"
-    curl -L -o /cache/$1 --fail $2
+    curl -L -o $1 --fail $2
 fi
 
 # sha256 check
 if [[ "$1" =~ ^.*\.sha256sum ]]; then
     echo "> verifing downloaded files: $1"
-    cd /cache && sha256sum -c /cache/$1
+    cd $(dirname "$1") && sha256sum -c $1
 fi
 
 # gpg signature verification
 if [[ "$1" =~ ^.*\.asc ]]; then
     echo "> verifing with signature $1"
-    gpg --verify "/cache/$1" "/cache/${1::-4}"
+    gpg --verify "$1" "${1::-4}"
 fi

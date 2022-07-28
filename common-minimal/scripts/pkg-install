@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+microdnf install "$@"
+microdnf clean all
