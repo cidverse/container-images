@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=anchore/grype
-ARG GRYPE_VERSION=0.43.0
+ARG GRYPE_VERSION=0.44.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
