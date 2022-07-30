@@ -1,4 +1,4 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/grype
 
 # build binary
@@ -6,11 +6,13 @@
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=anchore/grype
-ARG GRYPE_VERSION=0.43.0
+ARG GRYPE_VERSION=0.44.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-RUN cidverse-download "grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" \
+# cidverse-download
+RUN file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" \
+&&  file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.sha256sum" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_checksums.txt" \
 &&  tar xzvf "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ \
 &&  mv /tmp/grype /usr/local/bin/grype
 
@@ -19,6 +21,10 @@ RUN cidverse-download "grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" 
 FROM quay.io/cidverse/common-micro:latest
 
 COPY --from=builder /usr/local/bin/grype /usr/local/bin/grype
+
+RUN mkdir -p /app/.cache/grype/db \
+&&  chgrp -R 0 /app/.cache/grype \
+&&  chmod -R g=u /app/.cache/grype
 
 USER 1001
 CMD ["grype"]

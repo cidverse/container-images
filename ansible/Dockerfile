@@ -1,9 +1,9 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/ansible
 
-# runtime image
+# build image
 #
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/common-build:latest as builder
 
 # renovate: datasource=pypi depName=ansible
 ARG ANSIBLE_VERSION=6.0.0
@@ -11,10 +11,18 @@ ARG ANSIBLE_VERSION=6.0.0
 # renovate: datasource=pypi depName=docker
 ARG DOCKER_VERSION=5.0.3
 
-RUN microdnf install -y python3-pip sshpass \
-&&  pip3 install --upgrade pip \
-&&  pip3 install ansible==${ANSIBLE_VERSION} \
-&&  pip3 install docker==${DOCKER_VERSION}
+RUN pkg-install python3-pip ca-certificates && \
+    pkg-install-rootfs python3 sshpass && \
+    pip3 install --upgrade pip && \
+    pip3 install --root="/rootfs" --no-warn-script-location ansible==${ANSIBLE_VERSION} && \
+    pip3 install --root="/rootfs" --no-warn-script-location docker==${DOCKER_VERSION}
+
+# runtime image
+#
+FROM quay.io/cidverse/common-micro:latest
+COPY --from=builder /rootfs /
+RUN mkdir -p /app/.ansible && \
+    chmod -R 777 /app/.ansible
 
 USER 1001
 CMD ["ansible"]

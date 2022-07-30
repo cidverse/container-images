@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -e
 
-microdnf install "$@"
+microdnf clean all

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
 # config
 installRoot=${INSTALLROOT:-/rootfs}
 
 # exec
-microdnf --noplugins --config=/etc/dnf/dnf.conf --setopt=cachedir=/var/cache/microdnf --setopt=reposdir=/etc/yum.repos.d --setopt=varsdir=/etc/dnf --installroot=$installRoot "$@"
+microdnf --noplugins --config=/etc/dnf/dnf.conf --setopt=cachedir=/var/cache/microdnf --setopt=reposdir=/etc/yum.repos.d --setopt=varsdir=/etc/dnf --installroot=$installRoot --releasever 9 install "$@"

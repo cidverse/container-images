@@ -1,18 +1,26 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/applicationinspector
 
-# runtime image
+# build image
 #
-FROM quay.io/cidverse/common-minimal:latest
-ENV PATH="${PATH}:/app/.dotnet/tools"
+FROM quay.io/cidverse/common-build:latest as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.5.18
 
-RUN microdnf install -y dotnet-sdk-6.0 \
-&&  dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION} \
-&&  microdnf remove -y dotnet-sdk-6.0 \
-&&  microdnf install -y dotnet-runtime-6.0
+RUN pkg-install dotnet-sdk-6.0 && \
+    pkg-install-rootfs dotnet-runtime-6.0 && \
+    dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION}
+
+# runtime image
+#
+FROM quay.io/cidverse/common-micro:latest
+
+COPY --from=builder /rootfs /
+COPY --from=builder /app/.dotnet /app/.dotnet
+ENV PATH="${PATH}:/app/.dotnet/tools"
+RUN mkdir -p /app/.ansible && \
+    chmod -R 777 /app/.ansible
 
 USER 1001
 CMD ["appinspector"]
