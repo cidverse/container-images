@@ -1,8 +1,8 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64
 # image=quay.io/cidverse/hadolint
 
-# build binary
-# 
+# build
+#
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=hadolint/hadolint
@@ -10,8 +10,8 @@ ARG HADOLINT_VERSION=2.10.0
 ARG TARGETOS
 ARG TARGETARCH
 
-RUN curl -L -o /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 \
-&&  chmod +x /usr/local/bin/hadolint
+RUN curl -L -o /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 && \
+    chmod +x /usr/local/bin/hadolint
 
 # runtime image
 #

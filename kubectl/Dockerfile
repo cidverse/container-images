@@ -1,9 +1,8 @@
-# syntax=docker.io/docker/dockerfile:1.3
-# platforms=linux/amd64
+# platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
 # image=quay.io/cidverse/kubectl
 
-# build / download
-# 
+# build
+#
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
@@ -11,8 +10,8 @@ ARG K8S_VERSION=1.24.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl -o /usr/local/bin/kubectl \
-&&  chmod +x /usr/local/bin/kubectl
+RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl -o /usr/local/bin/kubectl && \
+    chmod +x /usr/local/bin/kubectl
 
 # runtime image
 #

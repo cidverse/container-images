@@ -11,10 +11,10 @@ ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
 # cidverse-download 
-RUN file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/syft/releases/download/v${SYFT_VERSION}/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" \
-&&  file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.sha256sum" "https://github.com/anchore/syft/releases/download/v${SYFT_VERSION}/syft_${SYFT_VERSION}_checksums.txt" \
-&&  tar xzvf "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ \
-&&  mv /tmp/syft /usr/local/bin/syft
+RUN file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/syft/releases/download/v${SYFT_VERSION}/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" && \
+    file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.sha256sum" "https://github.com/anchore/syft/releases/download/v${SYFT_VERSION}/syft_${SYFT_VERSION}_checksums.txt" && \
+    tar xzvf "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ && \
+    mv /tmp/syft /usr/local/bin/syft
 
 # runtime image
 #

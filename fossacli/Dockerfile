@@ -1,4 +1,4 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64
 # image=quay.io/cidverse/fossacli
 
 # runtime image

@@ -1,4 +1,4 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64
 # image=quay.io/cidverse/sonarscannercli
 
 # compile the twitch cli binary
@@ -8,10 +8,10 @@ FROM quay.io/cidverse/common-build:latest AS builder
 # renovate: datasource=github-releases depName=SonarSource/sonar-scanner-cli
 ARG SONARSCANNERCLI_VERSION=4.7.0.2747
 
-RUN mkdir -p /cache /app/sonarscanner \
-&&  curl -L -o /cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip \
-&&  unzip /cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip -d /tmp \
-&&  mv /tmp/sonar-scanner-${SONARSCANNERCLI_VERSION}-linux/* /app/sonarscanner
+RUN mkdir -p /cache /app/sonarscanner && \
+    curl -L -o /cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip && \
+    unzip /cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-linux.zip -d /tmp && \
+    mv /tmp/sonar-scanner-${SONARSCANNERCLI_VERSION}-linux/* /app/sonarscanner
 
 # runtime image
 #

@@ -1,9 +1,8 @@
-# syntax=docker.io/docker/dockerfile:1.3
 # platforms=linux/amd64
 # image=quay.io/cidverse/s2i
 
-# build / download
-# 
+# build
+#
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=openshift/source-to-image
@@ -11,11 +10,11 @@ ARG S2I_VERSION=1.3.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/source-to-image/releases/tags/v${S2I_VERSION} | jq -r '.assets[] | select((.name | contains("source-to-image")) and (.name | contains ("linux-amd64"))) | .browser_download_url') \
-&&  cidverse-download "s2i-${S2I_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "$DL_URL" \
-&&  tar xzvf /cache/s2i-${S2I_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz -C /tmp/ \
-&&  mv /tmp/s2i /usr/local/bin/s2i \
-&&  mv /tmp/sti /usr/local/bin/sti
+RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/source-to-image/releases/tags/v${S2I_VERSION} | jq -r '.assets[] | select((.name | contains("source-to-image")) and (.name | contains ("linux-amd64"))) | .browser_download_url') && \
+    file-download "/cache/s2i-${S2I_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "$DL_URL" && \
+    tar xzvf "/cache/s2i-${S2I_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" -C /tmp/ && \
+    mv /tmp/s2i /usr/local/bin/s2i && \
+    mv /tmp/sti /usr/local/bin/sti
 
 # runtime image
 #

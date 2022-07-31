@@ -2,7 +2,7 @@
 # image=quay.io/cidverse/grype
 
 # build binary
-# 
+#
 FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=anchore/grype
@@ -11,10 +11,10 @@ ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
 # cidverse-download
-RUN file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" \
-&&  file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.sha256sum" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_checksums.txt" \
-&&  tar xzvf "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ \
-&&  mv /tmp/grype /usr/local/bin/grype
+RUN file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" && \
+    file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.sha256sum" "https://github.com/anchore/grype/releases/download/v${GRYPE_VERSION}/grype_${GRYPE_VERSION}_checksums.txt" && \
+    tar xzvf "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ && \
+    mv /tmp/grype /usr/local/bin/grype
 
 # runtime image
 #
@@ -22,9 +22,9 @@ FROM quay.io/cidverse/common-micro:latest
 
 COPY --from=builder /usr/local/bin/grype /usr/local/bin/grype
 
-RUN mkdir -p /app/.cache/grype/db \
-&&  chgrp -R 0 /app/.cache/grype \
-&&  chmod -R g=u /app/.cache/grype
+RUN mkdir -p /app/.cache/grype/db && \
+    chgrp -R 0 /app/.cache/grype && \
+    chmod -R g=u /app/.cache/grype
 
 USER 1001
 CMD ["grype"]

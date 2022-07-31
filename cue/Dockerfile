@@ -1,4 +1,4 @@
-# syntax=docker.io/docker/dockerfile:1.3
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/cue
 
 # build binary
@@ -7,14 +7,13 @@ FROM quay.io/cidverse/common-build:latest AS builder
 
 # renovate: datasource=github-releases depName=cue-lang/cue
 ARG CUE_VERSION=0.4.3
-ARG TARGETOS
-ARG TARGETARCH
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
 
-RUN mkdir -p /cache \
-&&  curl -L -o /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz https://github.com/cue-lang/cue/releases/download/v${CUE_VERSION}/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz \
-&&  tar -xzf /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz -C /tmp \
-&&  cp /tmp/cue /usr/local/bin/cue \
-&&  rm -rf /tmp/*
+RUN file-download /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz https://github.com/cue-lang/cue/releases/download/v${CUE_VERSION}/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz && \
+    tar -xzf /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz -C /tmp && \
+    cp /tmp/cue /usr/local/bin/cue && \
+    rm -rf /tmp/*
 
 # runtime image
 #
