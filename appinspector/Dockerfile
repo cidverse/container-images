@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/common-build:latest as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
-ARG APPINSPECTOR_VERSION=1.5.18
+ARG APPINSPECTOR_VERSION=1.5.20
 
 RUN pkg-install dotnet-sdk-6.0 && \
     pkg-install-rootfs dotnet-runtime-6.0 && \
