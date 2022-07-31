@@ -25,28 +25,29 @@ TODO: Need another suitable base image similar to UBI-MICRO to supported ARCHs t
 
 > The provided ARCHs are limited by the binaries from the upstream releases.
 
-| Image           | amd64 | arm64 | s390x | ppc64le |
-|-----------------|-------|-------|-------|---------|
-| ansible         | ✓     | ✓     | ✗     | ✗       |
-| appinspector    | ✓     | ✓     | ✗     | ✗       |
-| aws             | ✓     | ✓     | ✗     | ✗       |
-| buildah         | ✓     | ✗     | ✗     | ✗       |
-| codecov-upload  | ✓     | ✗     | ✗     | ✗       |
-| cosign          | ✓     | ✓     | ✓     | ✓       |
-| cue             | ✓     | ✓     | ✗     | ✗       |
-| fossacli        | ✓     | ✗     | ✗     | ✗       |
-| githubcli       | ✓     | ✓     | ✗     | ✗       |
-| gitleaks        | ✓     | ✓     | ✗     | ✗       |
-| glab            | ✓     | ✓     | ✗     | ✗       |
-| grype           | ✓     | ✓     | ✗     | ✗       |
-| hadolint        | ✓     | ✗     | ✗     | ✗       |
-| helm            | ✓     | ✓     | ✓     | ✓       |
-| kubectl         | ✓     | ✓     | ✓     | ✓       |
-| openshiftcli    | ✓     | ✗     | ✗     | ✗       |
-| rke             | ✓     | ✓     | ✗     | ✗       |
-| s2i             | ✓     | ✗     | ✗     | ✗       |
-| shellcheck      | ✓     | ✓     | ✗     | ✗       |
-| sonarscannercli | ✓     | ✗     | ✗     | ✗       |
-| syft            | ✓     | ✓     | ✗     | ✓       |
-| twitchcli       | ✓     | ✗     | ✗     | ✗       |
-| upx             | ✓     | ✓     | ✗     | ✓       |
+| Image                | amd64 | arm64 | s390x | ppc64le |
+|----------------------|-------|-------|-------|---------|
+| ansible              | ✓     | ✓     | ✗     | ✗       |
+| applicationinspector | ✓     | ✓     | ✗     | ✗       |
+| aws                  | ✓     | ✓     | ✗     | ✗       |
+| buildah              | ✓     | ✗     | ✗     | ✗       |
+| codecov-upload       | ✓     | ✗     | ✗     | ✗       |
+| cosign               | ✓     | ✓     | ✓     | ✓       |
+| cue                  | ✓     | ✓     | ✗     | ✗       |
+| fossacli             | ✓     | ✗     | ✗     | ✗       |
+| ggshield             | ✓     | ✓     | ✗     | ✗       |
+| githubcli            | ✓     | ✓     | ✗     | ✗       |
+| gitleaks             | ✓     | ✓     | ✗     | ✗       |
+| glab                 | ✓     | ✓     | ✗     | ✗       |
+| grype                | ✓     | ✓     | ✗     | ✗       |
+| hadolint             | ✓     | ✗     | ✗     | ✗       |
+| helm                 | ✓     | ✓     | ✓     | ✓       |
+| kubectl              | ✓     | ✓     | ✓     | ✓       |
+| openshiftcli         | ✓     | ✗     | ✗     | ✗       |
+| rke                  | ✓     | ✓     | ✗     | ✗       |
+| s2i                  | ✓     | ✗     | ✗     | ✗       |
+| shellcheck           | ✓     | ✓     | ✗     | ✗       |
+| sonarscannercli      | ✓     | ✗     | ✗     | ✗       |
+| syft                 | ✓     | ✓     | ✗     | ✓       |
+| twitchcli            | ✓     | ✗     | ✗     | ✗       |
+| upx                  | ✓     | ✓     | ✗     | ✓       |
