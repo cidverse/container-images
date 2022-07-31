@@ -10,19 +10,11 @@ ARG SHELLCHECK_VERSION=0.8.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-# linux/amd64
-RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then \
-    file-download "/cache/shellcheck-linux-x86_64-${SHELLCHECK_VERSION}.tar.xz" "https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" && \
-    tar -xvf "/cache/shellcheck-linux-x86_64-${SHELLCHECK_VERSION}.tar.xz" -C /tmp && \
-    cp /tmp/shellcheck-v${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck \
-    ; fi
-
-# linux/arm64
-RUN if [ "$TARGETOS/$TARGETARCH" == "linux/arm64" ]; then \
-    file-download "/cache/shellcheck-linux-aarch64-${SHELLCHECK_VERSION}.tar.xz" "https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.aarch64.tar.xz" && \
-    tar -xvf "/cache/shellcheck-linux-aarch64-${SHELLCHECK_VERSION}.tar.xz" -C /tmp && \
-    cp /tmp/shellcheck-v${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck \
-    ; fi
+RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x86_64; fi && \
+    if [ "$TARGETOS/$TARGETARCH" == "linux/arm64" ]; then export TARGETARCH=aarch64; fi && \
+    file-download "/cache/shellcheck-${TARGETOS}-${TARGETARCH}-${SHELLCHECK_VERSION}.tar.xz" "https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.${TARGETOS}.${TARGETARCH}.tar.xz" && \
+    tar -xvf "/cache/shellcheck-${TARGETOS}-${TARGETARCH}-${SHELLCHECK_VERSION}.tar.xz" -C /tmp && \
+    cp /tmp/shellcheck-v${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck
 
 # runtime image
 #
