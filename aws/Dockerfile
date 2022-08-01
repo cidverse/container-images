@@ -1,7 +1,7 @@
 # platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/aws
 
-# compile the twitch cli binary
+# build
 #
 FROM quay.io/cidverse/common-build:latest AS builder
 

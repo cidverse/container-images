@@ -21,9 +21,16 @@ We also provide a minimal and build image, which should be used in a multi stage
 
 TODO: Need another suitable base image similar to UBI-MICRO to supported ARCHs that are missing in UBI.
 
-## App Images
+## Base Images
 
-> The provided ARCHs are limited by the binaries from the upstream releases.
+> These images can be used as a base to build your own app images.
+
+| Image          | amd64 | arm64 | s390x | ppc64le |
+|----------------|-------|-------|-------|---------|
+| base-coretto11 | ✓     | ✓     | ✗     | ✗       |
+| base-coretto17 | ✓     | ✓     | ✗     | ✗       |
+
+## App Images
 
 | Image                | amd64 | arm64 | s390x | ppc64le |
 |----------------------|-------|-------|-------|---------|

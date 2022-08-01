@@ -22,5 +22,9 @@ ENV PATH="${PATH}:/app/sonarscanner/bin" \
 RUN microdnf install -y zlib.i686 git python3 java-11-openjdk
 COPY --from=builder /app/sonarscanner /app/sonarscanner
 
-USER 1001
+
+RUN mkdir -p /app/.sonar && \
+    chmod -R 777 /app
+
+USER root
 CMD ["sonar-scanner"]
