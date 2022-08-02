@@ -3,7 +3,7 @@
 
 # build
 #
-FROM registry.hub.docker.com/library/golang:1.18 AS builder
+FROM registry.hub.docker.com/library/golang:1.19 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
 ARG GITHUBCLI_VERSION=2.14.3
