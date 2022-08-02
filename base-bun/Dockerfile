@@ -1,4 +1,4 @@
-# platforms=linux/amd64
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/base-bun
 
 # build binary
