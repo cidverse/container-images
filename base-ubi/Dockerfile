@@ -1,22 +1,22 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
-# image=quay.io/cidverse/common-micro:latest
+# image=quay.io/cidverse/base-ubi:latest
 
-# upstream
-FROM registry.access.redhat.com/ubi9-micro:9.0.0-14 AS ubi
+# ubi micro
+FROM registry.access.redhat.com/ubi9-micro:9.0.0-14 AS ubi-micro
 
-# upstream
-FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS minimal
+# ubi minimal
+FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS ubi-minimal
 
 # image
 FROM scratch
-COPY --from=ubi / /
-COPY --from=minimal /etc/pki/ca-trust /etc/pki/ca-trust
+COPY --from=ubi-micro / /
+COPY --from=ubi-minimal /etc/pki/ca-trust /etc/pki/ca-trust
 
 # configuration
 ENV HOME=/app
-RUN mkdir -p /app /cache \
-&&  chgrp -R 0 /app \
-&&  chmod -R g=u /app
+RUN mkdir -p /app /cache && \
+    chgrp -R 0 /app && \
+    chmod -R g=u /app
 CMD /bin/bash
 
 # labels (only set information about the base layer do not mess with the app images labels)

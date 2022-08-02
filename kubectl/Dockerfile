@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG K8S_VERSION=1.24.3
@@ -15,7 +15,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${K8S_VER
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 RUN mkdir -p /app/.kube
 ADD entrypoint.sh /app/entrypoint.sh

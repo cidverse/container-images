@@ -18,7 +18,7 @@ RUN apt-get update && \
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/gh /usr/local/bin/gh
 

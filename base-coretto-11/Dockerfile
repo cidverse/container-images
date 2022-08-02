@@ -1,9 +1,9 @@
 # platforms=linux/amd64,linux/arm64/v8
-# image=quay.io/cidverse/base-coretto11
+# image=quay.io/cidverse/base-coretto-11
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=corretto/corretto-11
 ARG CORETTO_VERSION=11.0.16.8.1
@@ -19,7 +19,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 
 # runtime image
 #
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/lib/jvm/coretto /usr/lib/jvm/coretto
 ENV JAVA_HOME=/usr/lib/jvm/coretto

@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/common-build:latest as builder
+FROM quay.io/cidverse/base-ubi-build:latest as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.5.20
@@ -14,7 +14,7 @@ RUN pkg-install dotnet-sdk-6.0 && \
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /rootfs /
 COPY --from=builder /app/.dotnet /app/.dotnet

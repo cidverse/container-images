@@ -1,24 +1,26 @@
 # platforms=linux/amd64
 # image=quay.io/cidverse/fossacli
 
-# runtime image
+# build
 #
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
-ARG TARGETOS
-ARG TARGETARCH
 # renovate: datasource=github-releases depName=fossas/fossa-cli
 ARG FOSSACLI_VERSION=3.3.11
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
 
-RUN microdnf install -y java-11-openjdk-headless unzip && \
-    curl -H 'Cache-Control: no-cache' -L -o /tmp/fossa.zip https://github.com/fossas/fossa-cli/releases/download/v${FOSSACLI_VERSION}/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zip && \
-    unzip /tmp/fossa.zip -d /tmp && \
-    cp /tmp/fossa /usr/local/bin/fossa && \
-    chmod +x /usr/local/bin/fossa && \
-    rm -rf /tmp/* && \
-    microdnf remove -y unzip
+RUN file-download "/cache/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zip" "https://github.com/fossas/fossa-cli/releases/download/v${FOSSACLI_VERSION}/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zip" && \
+    unzip "/cache/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zip" -d /tmp && \
+    cp /tmp/fossa /usr/local/bin/fossa
 
-ENV JAVA_HOME=/usr/lib/jvm/jre-11-openjdk
+# runtime image
+#
+FROM quay.io/cidverse/base-coretto-11:11.0.16.8.1
+
+COPY --from=builder /usr/local/bin /usr/local/bin
+RUN java --version && \
+    fossa --version
 
 USER 1001
 CMD ["fossa"]

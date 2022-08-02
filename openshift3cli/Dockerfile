@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=openshift/origin
 ARG OPENSHIFT_VERSION=3.11.0
@@ -17,7 +17,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/origin/releas
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/oc /usr/local/bin/oc
 

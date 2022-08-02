@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=zricethezav/gitleaks
 ARG GITLEAKS_VERSION=8.9.0
@@ -18,7 +18,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/gitleaks /usr/local/bin/gitleaks
 

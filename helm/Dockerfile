@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=3.9.2
@@ -20,7 +20,7 @@ RUN curl https://get.helm.sh/KEYS | gpg --import && \
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 

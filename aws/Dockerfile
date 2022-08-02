@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=aws/aws-cli
 ARG AWS_VERSION=2.7.19
@@ -18,7 +18,7 @@ RUN pkg-install-rootfs groff-base less zlib && \
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /rootfs /
 COPY --from=builder /tmp/aws /tmp/aws

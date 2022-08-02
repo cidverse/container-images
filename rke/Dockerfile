@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=rancher/rke
 ARG RKE_VERSION=1.3.12
@@ -14,7 +14,7 @@ RUN file-download /usr/local/bin/rke https://github.com/rancher/rke/releases/dow
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/rke /usr/local/bin/rke
 

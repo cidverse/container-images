@@ -1,21 +1,30 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
-# image=quay.io/cidverse/common-minimal:latest
+# image=quay.io/cidverse/base-ubi-build:latest
 
-# upstream
-FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS ubi
+# ubi micro
+FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS ubi-micro
+
+# ubi minimal
+FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1580 AS ubi-minimal
 
 # image
 FROM scratch
-COPY --from=ubi / /
+COPY --from=ubi-micro / /
+COPY --from=ubi-minimal /etc/pki/ca-trust /etc/pki/ca-trust
+
+# scripts
 ADD scripts/* /usr/local/bin
 ADD config/dnf.conf /etc/dnf/dnf.conf
 
+# build utils
+RUN pkg-install tar xz gzip unzip git gpg jq
+
 # configuration
 ENV HOME=/app
-RUN useradd -u 1001 app --no-create-home --home-dir /app \
-&&  mkdir -p /app /cache \
-&&  chgrp -R 0 /app \
-&&  chmod -R g=u /app
+RUN useradd -u 1001 app --no-create-home --home-dir /app && \
+    mkdir -p /app /cache && \
+    chgrp -R 0 /app && \
+    chmod -R g=u /app
 CMD /bin/bash
 
 # labels (only set information about the base layer do not mess with the app images labels)

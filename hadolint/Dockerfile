@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ARG HADOLINT_VERSION=2.10.0
@@ -15,7 +15,7 @@ RUN curl -L -o /usr/local/bin/hadolint https://github.com/hadolint/hadolint/rele
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/hadolint /usr/local/bin/hadolint
 

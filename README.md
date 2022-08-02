@@ -13,22 +13,16 @@ We also provide a minimal and build image, which should be used in a multi stage
 
 ## Base Images
 
-| Image          | Arch                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| common-micro   | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=✓&color=success) |
-| common-minimal | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=✓&color=success) |
-| common-build   | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=✓&color=success) ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=✓&color=success) |
-
-TODO: Need another suitable base image similar to UBI-MICRO to supported ARCHs that are missing in UBI.
-
-## Base Images
-
 > These images can be used as a base to build your own app images.
 
-| Image          | amd64 | arm64 | s390x | ppc64le |
-|----------------|-------|-------|-------|---------|
-| base-coretto11 | ✓     | ✓     | ✗     | ✗       |
-| base-coretto17 | ✓     | ✓     | ✗     | ✗       |
+| Image           | amd64                                                                                                         | arm64                                                                                                            | s390x                                                                                                               | ppc64le                                                                                                               |
+|-----------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| base-ubi        | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=⛳&color=success)       | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=⛳&color=success)       |
+| base-ubi-build  | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=⛳&color=success)       | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=⛳&color=success)       |
+| base-coretto-11 | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=⛄&color=informational) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=⛄&color=informational) |
+| base-coretto-17 | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/amd64&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/arm64/v8&message=⛳&color=success) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/s390x&message=⛄&color=informational) | ![](https://img.shields.io/static/v1?style=flat-square&logo=redhat&label=linux/ppc64le&message=⛄&color=informational) |
+
+> Legend: Available: ⛳, 
 
 ## App Images
 

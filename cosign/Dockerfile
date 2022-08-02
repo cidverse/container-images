@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/common-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=sigstore/cosign
 ARG COSIGN_VERSION=1.10.0
@@ -15,7 +15,7 @@ RUN file-download "/cache/cosign-${TARGETOS}-${TARGETARCH}" "https://github.com/
 
 # runtime image
 #
-FROM quay.io/cidverse/common-micro:latest
+FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/cosign /usr/local/bin/cosign
 
