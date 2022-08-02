@@ -2,13 +2,14 @@
 
 # compile buildah from source
 # 
-FROM quay.io/cidverse/common-minimal:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.26.2
 
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
-    microdnf install -y containers-common device-mapper-devel golang gpgme-devel libassuan-devel libseccomp-devel make runc glibc-static git && \
+    pkg-install containers-common device-mapper-devel golang gpgme-devel libassuan-devel libseccomp-devel runc && \
+    pkg-install-rootfs fuse-overlayfs && \
     mkdir -p /go/src/github.com/containers && \
     git clone --depth 1 --branch v${BUILDAH_VERSION} https://github.com/containers/buildah.git /go/src/github.com/containers/buildah && \
     cd /go/src/github.com/containers/buildah && \
@@ -20,15 +21,15 @@ FROM quay.io/buildah/stable:v1.26.2 AS config
 
 # runtime image
 #
-FROM quay.io/cidverse/common-minimal:latest
+FROM quay.io/cidverse/base-ubi:latest
 
+COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
 COPY --from=config /etc/containers /etc/containers
 ADD script/buildah-script /usr/local/bin/buildah-script
 
 # containers-common runc
-RUN microdnf install -y fuse-overlayfs && \
-    sed -i -r -e 's,driver = ".*",driver = "vfs",g' /etc/containers/storage.conf && \
+RUN sed -i -r -e 's,driver = ".*",driver = "vfs",g' /etc/containers/storage.conf && \
     mkdir -p /var/lib/shared/overlay-images /var/lib/shared/overlay-layers /var/lib/shared/vfs-images /var/lib/shared/vfs-layers && \
     touch /var/lib/shared/overlay-images/images.lock && \
     touch /var/lib/shared/overlay-layers/layers.lock && \
