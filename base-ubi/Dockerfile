@@ -14,9 +14,9 @@ COPY --from=ubi-minimal /etc/pki/ca-trust /etc/pki/ca-trust
 
 # configuration
 ENV HOME=/app
-RUN mkdir -p /app /cache && \
+RUN mkdir -p /app && \
     chgrp -R 0 /app && \
-    chmod -R g=u /app
+    chmod -R 770 /app
 CMD /bin/bash
 
 # labels (only set information about the base layer do not mess with the app images labels)

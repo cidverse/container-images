@@ -24,7 +24,7 @@ ENV HOME=/app
 RUN useradd -u 1001 app --no-create-home --home-dir /app && \
     mkdir -p /app /cache && \
     chgrp -R 0 /app && \
-    chmod -R g=u /app
+    chmod -R 770 /app
 CMD /bin/bash
 
 # labels (only set information about the base layer do not mess with the app images labels)

@@ -1,6 +1,6 @@
 # Container Images for CI-Usage
 
-This is a collection of container images mostly for ci/cd usage.
+> A collection of container images for ci/cd usage or to use as base-image when building application images.
 
 All container images aim to be `micro` images, this means:
 
