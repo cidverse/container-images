@@ -19,6 +19,7 @@ RUN file-download "/cache/rekor-cli-${TARGETOS}-${TARGETARCH}" "https://github.c
 FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/rekor /usr/local/bin/rekor
+RUN rekor version
 
 USER 1001
 CMD ["rekor"]

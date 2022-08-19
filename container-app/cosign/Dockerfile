@@ -19,6 +19,7 @@ RUN file-download "/cache/cosign-${TARGETOS}-${TARGETARCH}" "https://github.com/
 FROM quay.io/cidverse/base-ubi:latest
 
 COPY --from=builder /usr/local/bin/cosign /usr/local/bin/cosign
+RUN cosign version
 
 USER 1001
 CMD ["cosign"]
