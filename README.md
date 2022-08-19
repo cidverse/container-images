@@ -52,6 +52,7 @@ All images are available in the following registries:
 | hugo                 | ✓     | ✗     | ✗     | ✗       |
 | kubectl              | ✓     | ✓     | ✓     | ✓       |
 | openshiftcli         | ✓     | ✗     | ✗     | ✗       |
+| rekor                | ✓     | ✓     | ✓     | ✓       |
 | rke                  | ✓     | ✓     | ✗     | ✗       |
 | s2i                  | ✓     | ✗     | ✗     | ✗       |
 | shellcheck           | ✓     | ✓     | ✗     | ✗       |
