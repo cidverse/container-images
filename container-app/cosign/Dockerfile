@@ -10,8 +10,8 @@ ARG COSIGN_VERSION=1.11.1
 ARG TARGETOS
 ARG TARGETARCH
 
-RUN file-download "/cache/cosign-${TARGETOS}-${TARGETARCH}" "https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-${TARGETOS}-${TARGETARCH}" && \
-    cp /cache/cosign-${TARGETOS}-${TARGETARCH} /usr/local/bin/cosign && \
+RUN file-download "/cache/cosign-${COSIGN_VERSION}-${TARGETOS}-${TARGETARCH}" "https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-${TARGETOS}-${TARGETARCH}" && \
+    cp /cache/cosign-${COSIGN_VERSION}-${TARGETOS}-${TARGETARCH} /usr/local/bin/cosign && \
     chmod +x /usr/local/bin/cosign
 
 # runtime image
