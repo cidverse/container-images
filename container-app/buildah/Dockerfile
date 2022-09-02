@@ -5,7 +5,7 @@
 FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
-ARG BUILDAH_VERSION=1.26.4
+ARG BUILDAH_VERSION=1.27.0
 
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
     pkg-install containers-common device-mapper-devel golang gpgme-devel libassuan-devel libseccomp-devel runc && \
