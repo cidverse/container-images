@@ -2,7 +2,7 @@
 # image=quay.io/cidverse/base-ubi:latest
 
 # ubi micro
-FROM registry.access.redhat.com/ubi9-micro:9.0.0-18 AS ubi-micro
+FROM registry.access.redhat.com/ubi9-micro:9.0.0-21 AS ubi-micro
 
 # ubi minimal
 FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1608 AS ubi-minimal
