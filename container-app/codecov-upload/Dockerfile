@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi:latest
 
 # renovate: datasource=github-releases depName=codecov/uploader
-ARG CODECOV_VERSION=0.3.1
+ARG CODECOV_VERSION=0.3.2
 
 ADD https://uploader.codecov.io/v${CODECOV_VERSION}/linux/codecov /usr/local/bin/codecov
 
