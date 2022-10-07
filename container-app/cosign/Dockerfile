@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=sigstore/cosign
-ARG COSIGN_VERSION=1.12.1
+ARG COSIGN_VERSION=1.13.0
 ARG TARGETOS
 ARG TARGETARCH
 
