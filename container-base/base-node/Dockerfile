@@ -1,4 +1,4 @@
-# platforms=linux/amd64,linux/arm64/v8
+# platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
 # image=quay.io/cidverse/base-node
 
 # build
@@ -26,8 +26,9 @@ COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/node /usr/lib/node
 ENV NODE_HOME=/usr/lib/node
 ENV PATH="${PATH}:/usr/lib/node/bin"
-RUN node --version && \
-    npm install -g npm
+RUN npm install -g npm
 
 USER 1001
+RUN node --version && \
+    npm --version
 CMD ["node"]
