@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=bitnami-labs/sealed-secrets
-ARG SEALEDSECRET_VERSION=0.19.0
+ARG SEALEDSECRET_VERSION=0.19.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
