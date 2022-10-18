@@ -1,23 +1,20 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
 # image=quay.io/cidverse/base-ubi-build:latest
 
-# ubi micro
-FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1644 AS ubi-micro
-
 # ubi minimal
 FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1644 AS ubi-minimal
 
 # image
 FROM scratch
-COPY --from=ubi-micro / /
-COPY --from=ubi-minimal /etc/pki/ca-trust /etc/pki/ca-trust
+COPY --from=ubi-minimal / /
 
 # scripts
 ADD scripts/* /usr/local/bin
 ADD config/dnf.conf /etc/dnf/dnf.conf
 
 # build utils
-RUN pkg-install tar xz gzip unzip git gpg jq glibc-static make
+RUN pkg-install tar xz gzip unzip git gpg jq glibc-static make && \
+    microdnf upgrade -y
 
 # configuration
 ENV HOME=/app
