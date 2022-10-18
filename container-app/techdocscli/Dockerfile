@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-node:18.11.0
 
 # renovate: datasource=npm depName=@techdocs/cli
-ARG TECHDOCS_VERSION=1.2.1
+ARG TECHDOCS_VERSION=1.2.2
 
 USER root
 RUN npm install -g --omit=dev @techdocs/cli@${TECHDOCS_VERSION}
