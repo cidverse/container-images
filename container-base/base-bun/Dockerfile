@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:latest AS builder
 
 # renovate: datasource=github-releases depName=oven-sh/bun
-ARG BUN_VERSION=0.1.6
+ARG BUN_VERSION=0.2.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
