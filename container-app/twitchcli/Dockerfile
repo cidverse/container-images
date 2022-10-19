@@ -6,7 +6,7 @@
 FROM registry.hub.docker.com/library/golang:1.19 AS builder
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
-ARG TWITCHCLI_VERSION=1.1.8
+ARG TWITCHCLI_VERSION=1.1.9
 ARG TARGETOS
 ARG TARGETARCH
 
