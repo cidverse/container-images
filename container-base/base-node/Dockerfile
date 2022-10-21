@@ -25,6 +25,7 @@ FROM quay.io/cidverse/base-ubi:9.0.0-21
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/node /usr/lib/node
 ENV NODE_HOME="/usr/lib/node"
+ENV NODE_ENV="production"
 ENV PATH="${PATH}:/usr/lib/node/bin"
 RUN npm install -g npm
 
