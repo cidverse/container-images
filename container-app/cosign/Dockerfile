@@ -3,7 +3,7 @@
 
 # build image
 # 
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=sigstore/cosign
 ARG COSIGN_VERSION=1.13.1
@@ -16,7 +16,7 @@ RUN file-download "/cache/cosign-${COSIGN_VERSION}-${TARGETOS}-${TARGETARCH}" "h
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/cosign /usr/local/bin/cosign
 RUN cosign version

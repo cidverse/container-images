@@ -1,8 +1,10 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
-# image=quay.io/cidverse/base-ubi:latest
+# image=quay.io/cidverse/base-ubi
 
-# ubi micro
-FROM registry.access.redhat.com/ubi9-micro:9.0.0-21 AS ubi-micro
+# ubi micro base
+# renovate: datasource=docker depName=registry.access.redhat.com/ubi9-micro
+ARG UBI_BASE_VERSION=9.0.0-21
+FROM registry.access.redhat.com/ubi9-micro:$UBI_BASE_VERSION AS ubi-micro
 
 # ubi minimal
 FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1644 AS ubi-minimal
@@ -10,7 +12,7 @@ FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1644 AS ubi-minimal
 # image
 FROM scratch
 COPY --from=ubi-micro / /
-COPY --from=ubi-minimal /etc/pki/ca-trust /etc/pki/ca-trust
+COPY --from=ubi-minimal /etc/pki /etc/pki
 
 # configuration
 ENV HOME=/app

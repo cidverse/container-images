@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=corretto/corretto-11
 ARG CORETTO_VERSION=11.0.16.9.1
@@ -19,7 +19,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/lib/jvm/coretto /usr/lib/jvm/coretto
 ENV JAVA_HOME=/usr/lib/jvm/coretto

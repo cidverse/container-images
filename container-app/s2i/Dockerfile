@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=openshift/source-to-image
 ARG S2I_VERSION=1.3.1
@@ -18,7 +18,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/source-to-ima
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/s2i /usr/local/bin/s2i
 COPY --from=builder /usr/local/bin/sti /usr/local/bin/sti

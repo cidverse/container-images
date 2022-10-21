@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=bitnami-labs/sealed-secrets
 ARG SEALEDSECRET_VERSION=0.19.1
@@ -16,7 +16,7 @@ RUN file-download "/cache/kubeseal-${SEALEDSECRET_VERSION}-${TARGETOS}-${TARGETA
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/kubeseal /usr/local/bin/kubeseal
 

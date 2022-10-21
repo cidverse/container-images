@@ -3,7 +3,7 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=anchore/syft
 ARG SYFT_VERSION=0.59.0
@@ -18,7 +18,7 @@ RUN file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz"
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/syft /usr/local/bin/syft
 

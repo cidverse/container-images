@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=gohugoio/hugo
 ARG HUGO_VERSION=0.104.3
@@ -18,7 +18,7 @@ RUN pkg-install-rootfs libstdc++ && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/hugo /usr/local/bin/hugo

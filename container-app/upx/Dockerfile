@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=upx/upx
 ARG UPX_VERSION=3.96
@@ -17,7 +17,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/ppc64le" ]; then export TARGETARCH=po
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/upx /usr/local/bin/upx
 

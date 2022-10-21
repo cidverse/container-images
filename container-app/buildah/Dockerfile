@@ -2,7 +2,7 @@
 
 # compile buildah from source
 # 
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.28.0
@@ -21,7 +21,7 @@ FROM quay.io/buildah/stable:v1.27.0 AS config
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah

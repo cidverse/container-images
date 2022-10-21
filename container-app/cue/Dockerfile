@@ -3,7 +3,7 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=cue-lang/cue
 ARG CUE_VERSION=0.4.3
@@ -17,7 +17,7 @@ RUN file-download /cache/cue_v${CUE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz ht
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /usr/local/bin/cue /usr/local/bin/cue
 

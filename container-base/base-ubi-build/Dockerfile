@@ -1,8 +1,10 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
-# image=quay.io/cidverse/base-ubi-build:latest
+# image=quay.io/cidverse/base-ubi-build
 
-# ubi minimal
-FROM registry.access.redhat.com/ubi9-minimal:9.0.0-1644 AS ubi-minimal
+# ubi minimal base
+# renovate: datasource=docker depName=registry.access.redhat.com/ubi9-minimal
+ARG UBI_BASE_VERSION=9.0.0-1644
+FROM registry.access.redhat.com/ubi9-minimal:$UBI_BASE_VERSION AS ubi-minimal
 
 # image
 FROM scratch

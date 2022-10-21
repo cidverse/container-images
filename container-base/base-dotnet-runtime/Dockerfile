@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:latest as builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 as builder
 
 ARG DOTNET_RUNTIME_VERSION=6.0
 
@@ -11,7 +11,7 @@ RUN pkg-install-rootfs dotnet-runtime-${DOTNET_RUNTIME_VERSION}
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 
 COPY --from=builder /rootfs /
 ENV PATH="${PATH}:/app/.dotnet/tools"

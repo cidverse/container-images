@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:latest AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
 
 # renovate: datasource=github-releases depName=SonarSource/sonar-scanner-cli
 ARG SONARSCANNERCLI_VERSION=4.7.0.2747
@@ -19,7 +19,7 @@ RUN mkdir -p /cache /app/sonarscanner && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:latest
+FROM quay.io/cidverse/base-ubi:9.0.0-21
 ENV PATH="${PATH}:/app/sonarscanner/bin" \
     JAVA_HOME=/usr/lib/jvm/jre-11-openjdk
 
