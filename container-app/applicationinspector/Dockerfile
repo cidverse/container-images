@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
-ARG APPINSPECTOR_VERSION=1.6.23
+ARG APPINSPECTOR_VERSION=1.6.24
 
 RUN pkg-install dotnet-sdk-6.0 && \
     dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION}
