@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 as builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1687 as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.6.24
