@@ -2,7 +2,7 @@
 
 # compile buildah from source
 # 
-FROM quay.io/cidverse/base-ubi-build:9.0.0-1644 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1687 AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.28.0
