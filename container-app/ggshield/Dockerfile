@@ -14,7 +14,7 @@ RUN pkg-install python3-pip ca-certificates && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-21
+FROM quay.io/cidverse/base-ubi:9.0.0-23
 
 COPY --from=builder /rootfs /
 

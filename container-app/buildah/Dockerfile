@@ -21,7 +21,7 @@ FROM quay.io/buildah/stable:v1.27.0 AS config
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-21
+FROM quay.io/cidverse/base-ubi:9.0.0-23
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
