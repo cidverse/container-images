@@ -20,7 +20,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-21
+FROM quay.io/cidverse/base-ubi:9.0.0-23
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/node /usr/lib/node
