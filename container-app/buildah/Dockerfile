@@ -2,18 +2,19 @@
 
 # compile buildah from source
 # 
-FROM quay.io/cidverse/base-ubi-build:9.0.0-1687 AS builder
+FROM quay.io/cidverse/build-go:1.19.3 AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.28.0
 
-RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
-    pkg-install containers-common device-mapper-devel golang gpgme-devel libassuan-devel libseccomp-devel runc && \
+# bats, btrfs-progs-devel go-md2man
+RUN pkg-install device-mapper-devel glib2-devel gpgme-devel libassuan-devel libseccomp-devel bzip2 runc skopeo-containers && \
     pkg-install-rootfs fuse-overlayfs && \
     mkdir -p /go/src/github.com/containers && \
     git clone --depth 1 --branch v${BUILDAH_VERSION} https://github.com/containers/buildah.git /go/src/github.com/containers/buildah && \
     cd /go/src/github.com/containers/buildah && \
-    env GOPATH=/go make -C /go/src/github.com/containers/buildah clean all install
+    env GOPATH=/go make -C /go/src/github.com/containers/buildah clean bin/buildah && \
+    cp /go/src/github.com/containers/buildah/bin/buildah /usr/local/bin/buildah
 
 # config source
 #
