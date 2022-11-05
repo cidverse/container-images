@@ -1,6 +1,12 @@
 # image=quay.io/cidverse/buildah
 
-# compile buildah from source
+###
+# Notes
+#
+# - containers-common provides the config files in /etc/containers
+###
+
+# build image
 # 
 FROM quay.io/cidverse/build-go:1.19.3 AS builder
 
@@ -9,16 +15,12 @@ ARG BUILDAH_VERSION=1.28.0
 
 # bats, btrfs-progs-devel go-md2man
 RUN pkg-install device-mapper-devel glib2-devel gpgme-devel libassuan-devel libseccomp-devel bzip2 runc skopeo-containers && \
-    pkg-install-rootfs fuse-overlayfs && \
+    pkg-install-rootfs containers-common buildah && \
     mkdir -p /go/src/github.com/containers && \
     git clone --depth 1 --branch v${BUILDAH_VERSION} https://github.com/containers/buildah.git /go/src/github.com/containers/buildah && \
     cd /go/src/github.com/containers/buildah && \
     env GOPATH=/go make -C /go/src/github.com/containers/buildah clean bin/buildah && \
     cp /go/src/github.com/containers/buildah/bin/buildah /usr/local/bin/buildah
-
-# config source
-#
-FROM quay.io/buildah/stable:v1.27.0 AS config
 
 # runtime image
 #
@@ -26,7 +28,6 @@ FROM quay.io/cidverse/base-ubi:9.0.0-23
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
-COPY --from=config /etc/containers /etc/containers
 ADD script/buildah-script /usr/local/bin/buildah-script
 
 # containers-common runc
@@ -40,9 +41,11 @@ RUN sed -i -r -e 's,driver = ".*",driver = "vfs",g' /etc/containers/storage.conf
 # uid/gid ranges for the user - https://github.com/containers/buildah/issues/3053
 RUN echo -e "app:1:999\napp:1001:64535" > /etc/subuid && \
     echo -e "app:1:999\napp:1001:64535" > /etc/subgid && \
-    mkdir -p /app/.local/share/containers /app/.config && \
-    chmod -R 777 /etc/containers /app/.config /app/.local/share/containers
+    mkdir -p /app/.local/share/containers /app/.config /app/.auth && \
+    chmod -R 777 /etc/containers /app/.config /app/.auth /app/.local/share/containers && \
+    touch /app/.auth/auth.json
 ENV BUILDAH_ISOLATION chroot
+ENV REGISTRY_AUTH_FILE /app/.auth/auth.json
 
 VOLUME /var/lib/containers
 VOLUME /app/.local/share/containers
