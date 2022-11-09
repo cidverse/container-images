@@ -3,14 +3,12 @@
 
 # build
 #
-FROM registry.hub.docker.com/library/golang:1.19 AS builder
+FROM quay.io/cidverse/build-go:1.19.3 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
 ARG GITHUBCLI_VERSION=2.20.0
 
-RUN apt-get update && \
-    apt-get install -y unzip && \
-    mkdir -p /cache && \
+RUN mkdir -p /cache && \
     curl -L -o /cache/githubcli-v${GITHUBCLI_VERSION}.zip https://github.com/cli/cli/archive/refs/tags/v${GITHUBCLI_VERSION}.zip && \
     unzip /cache/githubcli-v${GITHUBCLI_VERSION}.zip -d /tmp/src && \
     cd /tmp/src/cli-${GITHUBCLI_VERSION} && \
