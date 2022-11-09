@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.0.0-1687 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.0.0-1700 AS builder
 
 # renovate: datasource=github-releases depName=openshift/origin
 ARG OPENSHIFT_VERSION=3.11.0
