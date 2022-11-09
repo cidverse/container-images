@@ -18,7 +18,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x86_
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-23
+FROM quay.io/cidverse/base-ubi:9.0.0-24
 
 COPY --from=builder /usr/local/bin/glab /usr/local/bin/glab
 

@@ -16,7 +16,7 @@ RUN file-download /usr/local/bin/rke2 https://github.com/rancher/rke2/releases/d
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-23
+FROM quay.io/cidverse/base-ubi:9.0.0-24
 
 COPY --from=builder /usr/local/bin/rke2 /usr/local/bin/rke2
 RUN rke2 --version
