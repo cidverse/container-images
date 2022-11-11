@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.0.0-1700 AS builder
 
 # renovate: datasource=github-releases depName=rancher/rke
-ARG RKE_VERSION=1.3.15
+ARG RKE_VERSION=1.4.0
 ARG TARGETOS
 ARG TARGETARCH
 
