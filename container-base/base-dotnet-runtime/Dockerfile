@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.0.0-1700 as builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1656 as builder
 
 ARG DOTNET_RUNTIME_VERSION=6.0
 
