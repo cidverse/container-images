@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-go:1.19.3 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
-ARG GITHUBCLI_VERSION=2.20.0
+ARG GITHUBCLI_VERSION=2.20.2
 
 RUN mkdir -p /cache && \
     curl -L -o /cache/githubcli-v${GITHUBCLI_VERSION}.zip https://github.com/cli/cli/archive/refs/tags/v${GITHUBCLI_VERSION}.zip && \
