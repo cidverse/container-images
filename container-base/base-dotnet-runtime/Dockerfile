@@ -11,7 +11,7 @@ RUN pkg-install-rootfs dotnet-runtime-${DOTNET_RUNTIME_VERSION}
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-24
+FROM quay.io/cidverse/base-ubi:9.1.0-6
 
 COPY --from=builder /rootfs /
 ENV PATH="${PATH}:/app/.dotnet/tools"

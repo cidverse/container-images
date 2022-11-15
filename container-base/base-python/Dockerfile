@@ -20,7 +20,7 @@ RUN pkg-install zlib-devel && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.0.0-24
+FROM quay.io/cidverse/base-ubi:9.1.0-6
 
 COPY --from=builder /usr/lib/python /usr/lib/python
 ENV PATH="${PATH}:/usr/lib/python/bin"
