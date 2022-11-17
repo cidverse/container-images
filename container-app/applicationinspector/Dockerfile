@@ -1,23 +1,22 @@
-# platforms=linux/amd64,linux/arm64/v8
+# platforms=linux/amd64
 # image=quay.io/cidverse/applicationinspector
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1656 as builder
+FROM quay.io/cidverse/base-dotnet-sdk:7.0.100 as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.6.25
 
-RUN pkg-install dotnet-sdk-6.0 && \
-    dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION}
+RUN dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION}
 
 # runtime image
 #
-FROM quay.io/cidverse/base-dotnet-runtime:6.0
+FROM quay.io/cidverse/base-dotnet-runtime:7.0.0
 
-COPY --from=builder /app/.dotnet /app/.dotnet
-RUN mkdir -p /app/.ansible && \
-    chmod -R 777 /app/.ansible
+COPY --from=builder /app/.dotnet/tools /usr/lib/dotnet/tools
 
 USER 1001
 CMD ["appinspector"]
+RUN dotnet --info && \
+    appinspector version || true

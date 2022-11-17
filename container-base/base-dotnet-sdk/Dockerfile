@@ -1,12 +1,12 @@
 # platforms=linux/amd64,linux/arm64/v8
-# image=quay.io/cidverse/base-dotnet-runtime
+# image=quay.io/cidverse/base-dotnet-sdk
 
 # build image
 #
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1656 as builder
 
-# renovate: datasource=github-releases depName=dotnet/runtime
-ARG DOTNET_RUNTIME_VERSION=7.0.0
+# renovate: datasource=github-releases depName=dotnet/sdk
+ARG DOTNET_SDK_VERSION=7.0.100
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
@@ -17,8 +17,7 @@ RUN pkg-install-rootfs libstdc++ krb5-libs libicu openssl-libs zlib && \
     /tmp/dotnet-install.sh \
       --architecture "$TARGETARCH" \
       --install-dir "/usr/lib/dotnet" \
-      --runtime "dotnet" \
-      --version "$DOTNET_RUNTIME_VERSION" \
+      --version "$DOTNET_SDK_VERSION" \
       --no-path
 
 # runtime image
