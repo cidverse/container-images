@@ -29,7 +29,6 @@ ENV NODE_ENV="production"
 ENV PATH="${PATH}:/usr/lib/node/bin"
 RUN npm install -g npm
 
-USER 1001
 RUN node --version && \
     npm --version
 CMD ["node"]

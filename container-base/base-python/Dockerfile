@@ -26,5 +26,4 @@ COPY --from=builder /usr/lib/python /usr/lib/python
 ENV PATH="${PATH}:/usr/lib/python/bin"
 RUN python3 --version
 
-USER 1001
 CMD ["python3"]

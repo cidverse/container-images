@@ -26,5 +26,4 @@ ENV JAVA_HOME=/usr/lib/jvm/coretto
 ENV PATH="${PATH}:/usr/lib/jvm/coretto/bin"
 RUN java -version
 
-USER 1001
 CMD ["java"]
