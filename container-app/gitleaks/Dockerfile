@@ -10,7 +10,8 @@ ARG GITLEAKS_VERSION=8.15.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64; fi && \
+RUN pkg-install-rootfs git && \
+    if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64; fi && \
     if [ "$TARGETOS/$TARGETARCH" == "linux/arm64" ]; then export TARGETARCH=arm64; fi && \
     file-download "/cache/gitleaks_${GITLEAKS_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" "https://github.com/zricethezav/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" && \
     tar xzvf "/cache/gitleaks_${GITLEAKS_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" -C /tmp/ && \
@@ -20,6 +21,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 #
 FROM quay.io/cidverse/base-ubi:9.1.0-6
 
+COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/gitleaks /usr/local/bin/gitleaks
 
 USER 1001
