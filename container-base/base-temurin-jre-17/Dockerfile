@@ -1,6 +1,6 @@
 # platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/base-temurin-jre-17
-# tag-regex=ARG ADOPTIUM_VERSION=jdk-(?P<major>[0-9]+).(?P<minor>[0-9]+).(?P<patch>[0-9]+)\+(?P<build>[0-9]+)
+# tag-regex=ARG ADOPTIUM_VERSION=jdk-(?P<major>[0-9]+)\.(?P<minor>[0-9]+)\.(?P<patch>[0-9]+)\+(?P<build>[0-9]+)
 
 # build
 #
