@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1656 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
 
 # renovate: datasource=pypi depName=mkdocs-techdocs-core
 ARG MKDOCS_TECHDOCS_CORE=1.1.7

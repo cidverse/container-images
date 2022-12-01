@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1656 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
 
 # renovate: datasource=github-releases depName=oven-sh/bun
 ARG BUN_VERSION=0.2.0
