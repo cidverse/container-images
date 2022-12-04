@@ -29,6 +29,7 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah
 ADD script/buildah-script /usr/local/bin/buildah-script
+ADD script/buildah-entrypoint.sh /usr/local/bin/buildah-entrypoint.sh
 
 # containers-common runc
 RUN sed -i -r -e 's,driver = ".*",driver = "vfs",g' /etc/containers/storage.conf && \
@@ -49,5 +50,7 @@ ENV REGISTRY_AUTH_FILE /app/.auth/auth.json
 
 VOLUME /var/lib/containers
 VOLUME /app/.local/share/containers
+
 USER root
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/buildah-entrypoint.sh"]
 CMD ["buildah"]
