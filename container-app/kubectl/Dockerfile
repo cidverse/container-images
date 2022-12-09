@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG K8S_VERSION=1.25.5
+ARG K8S_VERSION=1.26.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
