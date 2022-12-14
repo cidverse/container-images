@@ -12,7 +12,7 @@ RUN dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --versio
 
 # runtime image
 #
-FROM quay.io/cidverse/base-dotnet-runtime:7.0.0
+FROM quay.io/cidverse/base-dotnet-runtime:7.0.1
 
 COPY --from=builder /app/.dotnet/tools /usr/lib/dotnet/tools
 
