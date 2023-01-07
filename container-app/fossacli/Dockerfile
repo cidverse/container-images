@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
 
 # renovate: datasource=github-releases depName=fossas/fossa-cli
-ARG FOSSACLI_VERSION=3.6.9
+ARG FOSSACLI_VERSION=3.6.10
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
