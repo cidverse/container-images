@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-dotnet-sdk:7.0.101 as builder
+FROM quay.io/cidverse/base-dotnet-sdk:7.0.102 as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
 ARG APPINSPECTOR_VERSION=1.6.26
