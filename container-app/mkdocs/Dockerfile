@@ -23,5 +23,4 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 COPY --from=builder /rootfs /
 RUN mkdocs --version
 
-USER 1001
 CMD ["mkdocs"]

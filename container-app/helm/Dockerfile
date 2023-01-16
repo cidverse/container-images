@@ -24,6 +24,5 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 
-USER 1001
 CMD ["helm"]
 VOLUME [ "/app/.kube", "/app/.config/helm", "/app/.local/share/helm", "/app/.cache/helm" ]

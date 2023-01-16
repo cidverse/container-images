@@ -24,6 +24,5 @@ ARG TECHDOCS_VERSION=1.2.4
 USER root
 RUN npm install -g --omit=dev @techdocs/cli@${TECHDOCS_VERSION}
 
-USER 1001
 RUN techdocs-cli --version
 CMD ["techdocs-cli"]

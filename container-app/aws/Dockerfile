@@ -26,5 +26,4 @@ RUN /tmp/aws/install && \
     rm -rf /tmp/aws && \
     aws --version
 
-USER 1001
 CMD ["aws"]

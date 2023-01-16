@@ -26,5 +26,4 @@ RUN mkdir -p /app/.cache/grype/db && \
     chgrp -R 0 /app/.cache/grype && \
     chmod -R g=u /app/.cache/grype
 
-USER 1001
 CMD ["grype"]

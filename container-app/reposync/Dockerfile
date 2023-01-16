@@ -12,5 +12,4 @@ ADD https://github.com/cidverse/reposync/releases/download/v${REPOSYNC_VERSION}/
 RUN chmod +x /usr/local/bin/reposync && \
     reposync version
 
-USER 1001
 CMD ["reposync"]

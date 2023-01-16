@@ -23,5 +23,4 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 COPY --from=builder /usr/local/bin/twitch /usr/local/bin/twitch
 RUN twitch mock-api generate -c 15
 
-USER 1001
 CMD ["twitch"]

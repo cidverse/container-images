@@ -25,5 +25,4 @@ COPY --from=builder /rootfs /
 RUN mkdir -p /app/.ansible && \
     chmod -R 777 /app/.ansible
 
-USER 1001
 CMD ["ansible"]

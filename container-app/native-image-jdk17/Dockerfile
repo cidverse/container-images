@@ -21,5 +21,4 @@ COPY --from=builder /rootfs /
 
 RUN gu install native-image
 
-USER 1001
 CMD ["native-image"]

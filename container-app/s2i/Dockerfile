@@ -23,5 +23,4 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 COPY --from=builder /usr/local/bin/s2i /usr/local/bin/s2i
 COPY --from=builder /usr/local/bin/sti /usr/local/bin/sti
 
-USER 1001
 CMD ["s2i"]

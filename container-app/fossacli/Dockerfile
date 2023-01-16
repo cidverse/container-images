@@ -22,5 +22,4 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 RUN java --version && \
     fossa --version
 
-USER 1001
 CMD ["fossa"]

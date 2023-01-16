@@ -16,7 +16,6 @@ FROM quay.io/cidverse/base-dotnet-runtime:7.0.2
 
 COPY --from=builder /app/.dotnet/tools /usr/lib/dotnet/tools
 
-USER 1001
 CMD ["appinspector"]
 RUN dotnet --info && \
     appinspector version || true

@@ -21,7 +21,6 @@ RUN mkdir -p /app/.kube
 ADD entrypoint.sh /app/entrypoint.sh
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 
-USER 1001
 ENTRYPOINT [ "/app/entrypoint.sh" ]
 CMD ["kubectl"]
 VOLUME [ "/app/.kube" ]

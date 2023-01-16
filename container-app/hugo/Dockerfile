@@ -24,5 +24,4 @@ COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/hugo /usr/local/bin/hugo
 RUN hugo version
 
-USER 1001
 CMD ["hugo"]

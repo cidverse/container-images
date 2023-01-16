@@ -21,6 +21,5 @@ FROM quay.io/cidverse/base-ubi:9.1.0-6
 
 COPY --from=builder /usr/local/bin/oc /usr/local/bin/oc
 
-USER 1001
 CMD ["oc"]
 VOLUME [ "/app/.kube" ]
