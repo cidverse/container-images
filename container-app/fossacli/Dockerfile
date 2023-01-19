@@ -16,7 +16,7 @@ RUN file-download "/cache/fossa_${FOSSACLI_VERSION}_${TARGETOS}_${TARGETARCH}.zi
 
 # runtime image
 #
-FROM quay.io/cidverse/base-coretto-11:11.0.17.8.1
+FROM quay.io/cidverse/base-coretto-11:11.0.18.10.1
 
 COPY --from=builder /usr/local/bin /usr/local/bin
 RUN java --version && \
