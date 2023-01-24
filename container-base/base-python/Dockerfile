@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
 
 ## renovate: datasource=github-releases depName=python/cpython
 ARG PYTHON_VERSION=3.9.14
