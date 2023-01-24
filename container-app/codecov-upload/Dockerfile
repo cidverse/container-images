@@ -3,7 +3,7 @@
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.1.0-6
+FROM quay.io/cidverse/base-ubi:9.1.0-13
 
 # renovate: datasource=github-releases depName=codecov/uploader
 ARG CODECOV_VERSION=0.3.2
