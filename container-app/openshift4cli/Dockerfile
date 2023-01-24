@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1656.1669627757 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
 
 # renovate: datasource=github-releases depName=openshift/okd
 ARG OPENSHIFT_VERSION=4.10.0-0.okd-2022-07-09-073606
