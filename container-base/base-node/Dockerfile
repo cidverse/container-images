@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
 
 # renovate: datasource=github-releases depName=nodejs/node
-ARG NODE_VERSION=19.4.0
+ARG NODE_VERSION=19.5.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
