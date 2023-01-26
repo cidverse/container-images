@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
 
 # renovate: datasource=github-releases depName=anchore/grype
-ARG GRYPE_VERSION=0.55.0
+ARG GRYPE_VERSION=0.56.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
