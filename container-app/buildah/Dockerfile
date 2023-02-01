@@ -46,7 +46,7 @@ RUN echo -e "app:1:999\napp:1001:64535" > /etc/subuid && \
     chmod -R 777 /etc/containers /app/.config /app/.auth /app/.local/share/containers && \
     touch /app/.auth/auth.json
 ENV BUILDAH_ISOLATION chroot
-ENV REGISTRY_AUTH_FILE /app/.auth/auth.json
+ENV REGISTRY_AUTH_FILE /app/.docker/config.json
 
 VOLUME /var/lib/containers
 VOLUME /app/.local/share/containers
