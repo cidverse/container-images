@@ -13,7 +13,7 @@ FROM quay.io/cidverse/base-python:3.9.14
 COPY --from=builder /rootfs /
 
 # renovate: datasource=pypi depName=semgrep
-ARG SEMGREP_VERSION=1.8.0
+ARG SEMGREP_VERSION=1.9.0
 
 RUN python3 -m ensurepip --upgrade && \
     pip3 install --upgrade pip && \
