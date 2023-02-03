@@ -15,7 +15,7 @@ RUN pkg-install python3-pip && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-node:19.5.0
+FROM quay.io/cidverse/base-node:19.6.0
 COPY --from=builder /rootfs /
 
 # renovate: datasource=npm depName=@techdocs/cli
