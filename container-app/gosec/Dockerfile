@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
 
 # renovate: datasource=github-releases depName=securego/gosec
-ARG GOSEC_VERSION=2.14.0
+ARG GOSEC_VERSION=2.15.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
