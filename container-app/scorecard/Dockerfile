@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1760 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1760.1675784957 AS builder
 
 # renovate: datasource=github-releases depName=ossf/scorecard
 ARG SCORECARD_VERSION=4.10.2
