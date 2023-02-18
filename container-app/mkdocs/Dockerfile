@@ -9,7 +9,7 @@ FROM quay.io/cidverse/base-ubi-build:9.1.0-1760.1675784957 AS builder
 ARG MKDOCS_VERSION=1.4.2
 
 # renovate: datasource=pypi depName=mkdocs-material
-ARG MKDOCS_MATERIAL=9.0.12
+ARG MKDOCS_MATERIAL=9.0.13
 
 RUN pkg-install python3-pip ca-certificates && \
     pkg-install-rootfs python3 && \
