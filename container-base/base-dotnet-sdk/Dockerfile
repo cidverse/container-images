@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1760.1675784957 as builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 as builder
 
 # renovate: datasource=github-releases depName=dotnet/sdk
 ARG DOTNET_SDK_VERSION=7.0.201
