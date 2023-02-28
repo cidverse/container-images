@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1760.1675784957 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
 
 # renovate: datasource=pypi depName=ggshield
 ARG GGSHIELD_VERSION=1.14.4
