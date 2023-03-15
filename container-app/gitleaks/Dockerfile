@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
 
 # renovate: datasource=github-releases depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=8.16.0
+ARG GITLEAKS_VERSION=8.16.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
