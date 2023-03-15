@@ -25,8 +25,9 @@ ENV PATH="${PATH}:/app/sonarscanner/bin" \
 
 COPY --from=builder /rootfs /
 COPY --from=builder /app/sonarscanner /app/sonarscanner
-RUN mkdir -p /app/.sonar && \
+RUN mkdir -p /app/.sonar /app/.sonar/cache /app/.sonar/cache/_tmp && \
     chmod -R 777 /app
 
-USER root
+ENV HOME=/app
+ENV SONAR_USER_HOME=/app/.sonar
 CMD ["sonar-scanner"]
