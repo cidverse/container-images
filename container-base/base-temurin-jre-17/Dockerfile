@@ -26,6 +26,7 @@ FROM quay.io/cidverse/base-ubi:9.1.0-15
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/jvm/temurin /usr/lib/jvm/temurin
+ADD scripts/* /usr/local/bin/
 
 ENV JAVA_HOME=/usr/lib/jvm/temurin
 ENV PATH="${PATH}:/usr/lib/jvm/temurin/bin"

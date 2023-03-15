@@ -22,6 +22,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 FROM quay.io/cidverse/base-ubi:9.1.0-15
 
 COPY --from=builder /usr/lib/jvm/coretto /usr/lib/jvm/coretto
+ADD scripts/* /usr/local/bin/
 ENV JAVA_HOME=/usr/lib/jvm/coretto
 ENV PATH="${PATH}:/usr/lib/jvm/coretto/bin"
 RUN java --version
