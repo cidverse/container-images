@@ -17,14 +17,20 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
     file-download "/cache/temurin-jdk-${ADOPTIUM_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "$DL_URL" && \
     tar -xf "/cache/temurin-jdk-${ADOPTIUM_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" -C /tmp && \
     mkdir -p /usr/lib/jvm/temurin && \
-    mv /tmp/$ADOPTIUM_VERSION/* /usr/lib/jvm/temurin
+    mv /tmp/$ADOPTIUM_VERSION/* /usr/lib/jvm/temurin && \
+    # gradle and maven wrapper needs these
+    mkdir -p /rootfs/usr/bin && \
+    cp /usr/bin/xargs /rootfs/usr/bin/xargs && \
+    cp /usr/bin/sed /rootfs/usr/bin/sed
 
 # runtime image
 #
 FROM quay.io/cidverse/base-ubi:9.1.0-15
 
+COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/jvm/temurin /usr/lib/jvm/temurin
 ADD scripts/* /usr/local/bin/
+
 ENV JAVA_HOME=/usr/lib/jvm/temurin
 ENV PATH="${PATH}:/usr/lib/jvm/temurin/bin"
 RUN java -version

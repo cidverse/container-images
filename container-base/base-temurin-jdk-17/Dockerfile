@@ -18,7 +18,11 @@ RUN pkg-install-rootfs zlib-devel && \
     file-download "/cache/temurin-jdk-${ADOPTIUM_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "$DL_URL" && \
     tar -xf "/cache/temurin-jdk-${ADOPTIUM_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" -C /tmp && \
     mkdir -p /usr/lib/jvm/temurin && \
-    mv /tmp/$ADOPTIUM_VERSION/* /usr/lib/jvm/temurin
+    mv /tmp/$ADOPTIUM_VERSION/* /usr/lib/jvm/temurin && \
+    # gradle and maven wrapper needs these
+    mkdir -p /rootfs/usr/bin && \
+    cp /usr/bin/xargs /rootfs/usr/bin/xargs && \
+    cp /usr/bin/sed /rootfs/usr/bin/sed
 
 # runtime image
 #
