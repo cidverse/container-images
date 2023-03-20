@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
 
 # renovate: datasource=github-releases depName=oras-project/oras
-ARG ORAS_VERSION=0.16.0
+ARG ORAS_VERSION=1.0.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
