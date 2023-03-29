@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
 
 # renovate: datasource=pypi depName=mkdocs-techdocs-core
-ARG MKDOCS_TECHDOCS_CORE=1.1.7
+ARG MKDOCS_TECHDOCS_CORE=1.2.0
 
 RUN pkg-install python3-pip && \
     pkg-install-rootfs python3 && \
