@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 
 # renovate: datasource=github-releases depName=rancher/rke2
 ARG RKE_VERSION=1.26.3

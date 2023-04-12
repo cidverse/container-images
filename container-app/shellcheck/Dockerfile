@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.1.0-1793 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 
 # renovate: datasource=github-releases depName=koalaman/shellcheck
 ARG SHELLCHECK_VERSION=0.8.0
