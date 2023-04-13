@@ -3,7 +3,7 @@
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.1.0-15
+FROM quay.io/cidverse/base-ubi:9.1.0-17
 
 # renovate: datasource=github-releases depName=cidverse/reposync
 ARG REPOSYNC_VERSION=0.3.0
