@@ -19,7 +19,7 @@ FROM quay.io/cidverse/base-node:19.9.0
 COPY --from=builder /rootfs /
 
 # renovate: datasource=npm depName=@techdocs/cli
-ARG TECHDOCS_VERSION=1.4.0
+ARG TECHDOCS_VERSION=1.4.1
 
 USER root
 RUN npm install -g --omit=dev @techdocs/cli@${TECHDOCS_VERSION}
