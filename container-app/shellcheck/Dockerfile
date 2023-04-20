@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 
 # renovate: datasource=github-releases depName=koalaman/shellcheck
-ARG SHELLCHECK_VERSION=0.8.0
+ARG SHELLCHECK_VERSION=0.9.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
