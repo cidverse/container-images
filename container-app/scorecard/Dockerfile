@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 
 # renovate: datasource=github-releases depName=ossf/scorecard
-ARG SCORECARD_VERSION=4.10.2
+ARG SCORECARD_VERSION=4.10.5
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
