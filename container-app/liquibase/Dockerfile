@@ -16,7 +16,7 @@ RUN file-download "/cache/liquibase-${LIQUIBASE_VERSION}_${TARGETARCH}.tar.gz" h
 
 # runtime image
 #
-FROM quay.io/cidverse/base-coretto-17:17.0.6.10.1
+FROM quay.io/cidverse/base-coretto-17:17.0.7.7.1
 
 COPY --from=builder /usr/lib/liquibase /usr/lib/liquibase
 ENV PATH="${PATH}:/usr/lib/liquibase"
