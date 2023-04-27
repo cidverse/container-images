@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-python:3.9.14
 
 # renovate: datasource=pypi depName=poetry
-ARG POETRY_VERSION=1.2.2
+ARG POETRY_VERSION=1.4.2
 
 RUN python3 -m ensurepip --upgrade && \
     pip3 install --upgrade pip && \
