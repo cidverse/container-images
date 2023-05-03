@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 
 # renovate: datasource=pypi depName=mkdocs
-ARG MKDOCS_VERSION=1.4.2
+ARG MKDOCS_VERSION=1.4.3
 
 # renovate: datasource=pypi depName=mkdocs-material
 ARG MKDOCS_MATERIAL=9.1.9
