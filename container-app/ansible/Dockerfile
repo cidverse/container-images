@@ -9,7 +9,7 @@ FROM quay.io/cidverse/base-ubi-build:9.1.0-1829 AS builder
 ARG ANSIBLE_VERSION=7.5.0
 
 # renovate: datasource=pypi depName=docker
-ARG DOCKER_VERSION=6.0.1
+ARG DOCKER_VERSION=6.1.0
 
 RUN pkg-install python3-pip ca-certificates && \
     pkg-install-rootfs python3 sshpass && \
