@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>philippheuer/renovate-config:preset-containerimage"
-  ]
+    "github>cidverse/renovate-config:default",
+    "github>cidverse/renovate-config:assignee"
+  ],
+  "baseBranches": ["main"]
 }
