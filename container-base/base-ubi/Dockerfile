@@ -7,7 +7,7 @@ ARG UBI_BASE_VERSION=9.1.0-17
 FROM registry.access.redhat.com/ubi9-micro:$UBI_BASE_VERSION AS ubi-micro
 
 # ubi minimal
-FROM registry.access.redhat.com/ubi9-minimal:9.1.0-1829 AS ubi-minimal
+FROM registry.access.redhat.com/ubi9-minimal:9.2-484 AS ubi-minimal
 
 # image
 FROM scratch
