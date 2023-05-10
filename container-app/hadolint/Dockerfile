@@ -15,7 +15,7 @@ RUN curl -L -o /usr/local/bin/hadolint https://github.com/hadolint/hadolint/rele
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.1.0-17
+FROM quay.io/cidverse/base-ubi:9.2-5
 
 COPY --from=builder /usr/local/bin/hadolint /usr/local/bin/hadolint
 

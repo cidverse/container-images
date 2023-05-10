@@ -22,7 +22,7 @@ RUN pkg-install-rootfs zlib-devel && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.1.0-17
+FROM quay.io/cidverse/base-ubi:9.2-5
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/graalvm /usr/lib/graalvm
