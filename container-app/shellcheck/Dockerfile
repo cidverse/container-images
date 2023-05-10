@@ -18,7 +18,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x86_
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.1.0-17
+FROM quay.io/cidverse/base-ubi:9.2-5
 
 COPY --from=builder /usr/local/bin/shellcheck /usr/local/bin/shellcheck
 RUN shellcheck --version
