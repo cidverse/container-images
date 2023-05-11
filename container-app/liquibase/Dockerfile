@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-484 AS builder
 
 # renovate: datasource=github-releases depName=liquibase/liquibase
-ARG LIQUIBASE_VERSION=4.21.1
+ARG LIQUIBASE_VERSION=4.22.0
 
 RUN file-download "/cache/liquibase-${LIQUIBASE_VERSION}_${TARGETARCH}.tar.gz" https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz && \
     mkdir -p /tmp/liquibase && \
