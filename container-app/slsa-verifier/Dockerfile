@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-484 AS builder
 
 # renovate: datasource=github-releases depName=slsa-framework/slsa-verifier
-ARG SLSAVERIFIER_VERSION=2.2.0
+ARG SLSAVERIFIER_VERSION=2.3.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
