@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/build-go:1.19.3 AS builder
+FROM quay.io/cidverse/build-go:1.20.4 AS builder
 
 # renovate: datasource=github-releases depName=containers/skopeo
 ARG SKOPEO_VERSION=1.12.0
