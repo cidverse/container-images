@@ -14,7 +14,7 @@ RUN pkg-install-rootfs python3
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.2-5
+FROM quay.io/cidverse/base-ubi:9.2-9
 
 COPY --from=builder /rootfs /
 RUN python3 --version
