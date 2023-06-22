@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-484 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.2-691 AS builder
 
 # renovate: datasource=pypi depName=ansible
 ARG ANSIBLE_VERSION=8.0.0
