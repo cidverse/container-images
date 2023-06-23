@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-691 as builder
 
 # renovate: datasource=github-releases depName=dotnet/sdk
-ARG DOTNET_SDK_VERSION=7.0.304
+ARG DOTNET_SDK_VERSION=7.0.305
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
