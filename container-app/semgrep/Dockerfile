@@ -9,7 +9,7 @@ RUN pkg-install-rootfs git
 
 # runtime image
 #
-FROM quay.io/cidverse/base-python:3.9.16
+FROM quay.io/cidverse/base-python:3.11.2
 COPY --from=builder /rootfs /
 
 # renovate: datasource=pypi depName=semgrep
