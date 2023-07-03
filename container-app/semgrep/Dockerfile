@@ -7,22 +7,25 @@ FROM quay.io/cidverse/base-ubi-build:9.2-691 AS builder
 
 RUN pkg-install-rootfs git
 
+
+# pip image
+#
+FROM quay.io/cidverse/base-python:3.11.2 AS pip
+
+RUN python3 -m ensurepip --upgrade && \
+    python3 -m pip install --upgrade pip && \
+    python3 -m pip install --root /rootfs --no-cache-dir --force-reinstall semgrep==${SEMGREP_VERSION}
+
 # runtime image
 #
 FROM quay.io/cidverse/base-python:3.11.2
+
 COPY --from=builder /rootfs /
+COPY --from=pip /rootfs /
 
 # renovate: datasource=pypi depName=semgrep
 ARG SEMGREP_VERSION=1.30.0
 
-RUN python3 -m ensurepip --upgrade && \
-    pip3 install --upgrade pip && \
-    pip3 install semgrep==${SEMGREP_VERSION} && \
-    semgrep --version
-
-ENV HOME /app
-ENV LANG="en_US.UTF-8"
-ENV LC_ALL="en_US.UTF-8"
-ENV LC_CTYPE="en_US.UTF-8"
+RUN semgrep --version
 
 CMD ["semgrep"]
