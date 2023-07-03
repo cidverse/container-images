@@ -17,9 +17,6 @@ COPY --from=ubi-minimal /etc/pki /etc/pki
 # configuration
 ENV HOME=/app
 ENV LD_LIBRARY_PATH=/usr/local/lib:/lib64:/usr/lib64:$LD_LIBRARY_PATH
-ENV LANG="en_US.UTF-8"
-ENV LC_ALL="en_US.UTF-8"
-ENV LC_CTYPE="en_US.UTF-8"
 RUN mkdir -p /app && \
     chgrp -R 0 /app && \
     chmod -R 770 /app
