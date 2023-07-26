@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-691 AS builder
 
 # renovate: datasource=github-releases depName=SonarSource/sonar-scanner-cli
-ARG SONARSCANNERCLI_VERSION=4.8.0.2856
+ARG SONARSCANNERCLI_VERSION=5.0.0.2966
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
