@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-691 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.2-717 AS builder
 
 # renovate: datasource=github-releases depName=zricethezav/gitleaks
 ARG GITLEAKS_VERSION=8.17.0
