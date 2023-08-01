@@ -19,7 +19,7 @@ RUN pkg-install-rootfs git && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.2-9
+FROM quay.io/cidverse/base-ubi:9.2-13
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/glab /usr/local/bin/glab
