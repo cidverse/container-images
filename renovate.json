@@ -4,5 +4,34 @@
     "github>cidverse/renovate-config:default",
     "github>cidverse/renovate-config:assignee"
   ],
-  "baseBranches": ["main"]
+  "baseBranches": ["main"],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "registry.access.redhat.com/ubi9-micro",
+        "registry.access.redhat.com/ubi9-minimal"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": [
+        "anchore/grype",
+        "anchore/syft",
+        "gohugoio/hugo",
+        "kubernetes/kubernetes",
+        "helm/helm",
+        "Microsoft/ApplicationInspector"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false
+    }
+  ],
+  "platformAutomerge": true
 }

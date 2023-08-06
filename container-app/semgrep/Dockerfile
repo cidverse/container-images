@@ -7,7 +7,6 @@ FROM quay.io/cidverse/base-ubi-build:9.2-717 AS builder
 
 RUN pkg-install-rootfs git
 
-
 # pip image
 #
 FROM quay.io/cidverse/base-python:3.11.2 AS pip

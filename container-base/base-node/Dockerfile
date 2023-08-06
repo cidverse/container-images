@@ -26,6 +26,7 @@ COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/node /usr/lib/node
 ENV NODE_HOME="/usr/lib/node"
 ENV NODE_ENV="production"
+ENV NODE_EXTRA_CA_CERTS="/etc/pki/tls/certs/ca-bundle.crt"
 ENV PATH="${PATH}:/usr/lib/node/bin"
 RUN npm install -g npm
 
