@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-717 AS builder
 
 # renovate: datasource=github-releases depName=golang/go
-ARG GO_VERSION=1.20
+ARG GO_VERSION=1.20.4
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
@@ -15,7 +15,8 @@ RUN file-download "/cache/go-${GO_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" "ht
     mkdir -p /usr/lib/go && \
     mv /tmp/go/* /usr/lib/go && \
     rm -rf /tmp/go && \
-    mkdir /go && \
+    mkdir -p /go /go/pkg/mod && \
+    chmod -R 775 /go && \
     chgrp -R 0 /go && \
     chmod -R g=u /go
 
