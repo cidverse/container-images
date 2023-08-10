@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-go:1.20.4 AS builder
 
 # renovate: datasource=github-releases depName=containers/skopeo
-ARG SKOPEO_VERSION=1.13.1
+ARG SKOPEO_VERSION=1.13.2
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
