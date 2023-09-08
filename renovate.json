@@ -12,10 +12,12 @@
         "registry.access.redhat.com/ubi9-micro",
         "registry.access.redhat.com/ubi9-minimal"
       ],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash",
-      "assignAutomerge": false
+      "assignAutomerge": false,
+      "ignoreTests": true
     },
     {
       "matchDatasources": ["github-releases"],
@@ -25,12 +27,47 @@
         "gohugoio/hugo",
         "kubernetes/kubernetes",
         "helm/helm",
-        "Microsoft/ApplicationInspector"
+        "Microsoft/ApplicationInspector",
+        "nodejs/node",
+        "cli/cli",
+        "oras-project/oras",
+        "fossas/fossa-cli",
+        "sigstore/rekor",
+        "sigstore/cosign",
+        "vektra/mockery",
+        "dotnet/sdk",
+        "dotnet/runtime",
+        "corretto/corretto-[0-9]+",
+        "adoptium/temurin[0-9]+-binaries"
       ],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash",
-      "assignAutomerge": false
+      "assignAutomerge": false,
+      "ignoreTests": true
+    },
+    {
+      "matchDatasources": ["pypi"],
+      "matchPackageNames": [
+        "pipenv",
+        "semgrep"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false,
+      "ignoreTests": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false,
+      "ignoreTests": true
     }
   ],
   "platformAutomerge": true
