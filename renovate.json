@@ -38,7 +38,9 @@
         "dotnet/sdk",
         "dotnet/runtime",
         "corretto/corretto-[0-9]+",
-        "adoptium/temurin[0-9]+-binaries"
+        "adoptium/temurin[0-9]+-binaries",
+        "rancher/rke",
+        "liquibase/liquibase"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
@@ -51,7 +53,8 @@
       "matchDatasources": ["pypi"],
       "matchPackageNames": [
         "pipenv",
-        "semgrep"
+        "semgrep",
+        "ansible"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
