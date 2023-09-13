@@ -4,7 +4,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-717 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
 
 # renovate: datasource=github-releases depName=adoptium/temurin8-binaries
 ARG ADOPTIUM_VERSION=jdk8u382-b05
