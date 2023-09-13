@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-717 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
 
 # renovate: datasource=github-releases depName=runpod/runpodctl
 ARG RUNPODCTL_VERSION=1.10.0
