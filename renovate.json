@@ -40,7 +40,8 @@
         "corretto/corretto-[0-9]+",
         "adoptium/temurin[0-9]+-binaries",
         "rancher/rke",
-        "liquibase/liquibase"
+        "liquibase/liquibase",
+        "google/osv-scanner"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
