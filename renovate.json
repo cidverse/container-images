@@ -43,7 +43,8 @@
         "liquibase/liquibase",
         "google/osv-scanner",
         "bitnami-labs/sealed-secrets",
-        "containers/buildah"
+        "containers/buildah",
+        "microsoft/ApplicationInspector"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
