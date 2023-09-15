@@ -41,7 +41,9 @@
         "adoptium/temurin[0-9]+-binaries",
         "rancher/rke",
         "liquibase/liquibase",
-        "google/osv-scanner"
+        "google/osv-scanner",
+        "bitnami-labs/sealed-secrets",
+        "containers/buildah"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
