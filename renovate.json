@@ -68,6 +68,18 @@
       "ignoreTests": true
     },
     {
+      "matchDatasources": ["npm"],
+      "matchPackageNames": [
+        "@techdocs/cli"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false,
+      "ignoreTests": true
+    },
+    {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
