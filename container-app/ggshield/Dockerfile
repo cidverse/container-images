@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
 
 # renovate: datasource=pypi depName=ggshield
-ARG GGSHIELD_VERSION=1.18.1
+ARG GGSHIELD_VERSION=1.19.1
 
 RUN pkg-install python3-pip ca-certificates && \
     pkg-install-rootfs python3 git && \
