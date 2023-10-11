@@ -44,7 +44,10 @@
         "google/osv-scanner",
         "bitnami-labs/sealed-secrets",
         "containers/buildah",
-        "microsoft/ApplicationInspector"
+        "microsoft/ApplicationInspector",
+        "securego/gosec",
+        "codecov/uploader",
+        "twitchdev/twitch-cli"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
