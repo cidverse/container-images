@@ -47,7 +47,12 @@
         "microsoft/ApplicationInspector",
         "securego/gosec",
         "codecov/uploader",
-        "twitchdev/twitch-cli"
+        "twitchdev/twitch-cli",
+        "nodejs/node",
+        "corretto/corretto-8",
+        "corretto/corretto-11",
+        "corretto/corretto-17",
+        "corretto/corretto-21"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
@@ -61,7 +66,8 @@
       "matchPackageNames": [
         "pipenv",
         "semgrep",
-        "ansible"
+        "ansible",
+        "ggshield"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
