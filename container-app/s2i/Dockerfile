@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
 
 # renovate: datasource=github-releases depName=openshift/source-to-image
-ARG S2I_VERSION=1.3.8
+ARG S2I_VERSION=1.3.9
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
