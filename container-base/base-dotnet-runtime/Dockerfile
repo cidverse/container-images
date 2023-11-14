@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.2-750 as builder
 
 # renovate: datasource=github-releases depName=dotnet/runtime
-ARG DOTNET_RUNTIME_VERSION=7.0.13
+ARG DOTNET_RUNTIME_VERSION=7.0.14
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
