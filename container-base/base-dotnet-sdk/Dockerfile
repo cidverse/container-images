@@ -22,7 +22,7 @@ RUN pkg-install-rootfs libstdc++ krb5-libs libicu openssl-libs zlib && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.2-13
+FROM quay.io/cidverse/base-ubi:9.3-6
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/dotnet /usr/lib/dotnet

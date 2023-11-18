@@ -19,7 +19,7 @@ RUN pkg-install-rootfs git && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.2-13
+FROM quay.io/cidverse/base-ubi:9.3-6
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/gitleaks /usr/local/bin/gitleaks
