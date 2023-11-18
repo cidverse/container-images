@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.3-1361.1699548032 AS builder
 
 # renovate: datasource=github-releases depName=gohugoio/hugo
 ARG HUGO_VERSION=0.120.4

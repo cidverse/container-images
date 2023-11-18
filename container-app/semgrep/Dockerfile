@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.3-1361.1699548032 AS builder
 
 RUN pkg-install-rootfs git
 

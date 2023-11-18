@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.2-750 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.3-1361.1699548032 AS builder
 
 # renovate: datasource=github-releases depName=minio/mc
 ARG MINIO_VERSION=2023.03.20
