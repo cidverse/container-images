@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-go:1.21.0 AS builder
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
-ARG TWITCHCLI_VERSION=1.1.21
+ARG TWITCHCLI_VERSION=1.1.22
 ARG TARGETOS
 ARG TARGETARCH
 
