@@ -12,7 +12,7 @@ RUN pkg-install-rootfs git
 FROM quay.io/cidverse/base-python:3.11.2 AS pip
 
 # renovate: datasource=pypi depName=semgrep
-ARG SEMGREP_VERSION=1.55.2
+ARG SEMGREP_VERSION=1.56.0
 
 RUN python3 -m ensurepip --upgrade && \
     python3 -m pip install --upgrade pip && \
