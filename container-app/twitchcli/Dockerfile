@@ -18,7 +18,7 @@ RUN mkdir -p /cache && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.3-6
+FROM quay.io/cidverse/base-ubi:9.3-9
 
 COPY --from=builder /usr/local/bin/twitch /usr/local/bin/twitch
 RUN twitch mock-api generate -c 15
