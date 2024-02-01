@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.3-1475 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.3-1552 AS builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG K8S_VERSION=1.29.1
