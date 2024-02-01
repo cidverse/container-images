@@ -16,7 +16,7 @@ RUN file-download "/cache/kubeseal-${SEALEDSECRET_VERSION}-${TARGETOS}-${TARGETA
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.3-9
+FROM quay.io/cidverse/base-ubi:9.3-13
 
 COPY --from=builder /usr/local/bin/kubeseal /usr/local/bin/kubeseal
 
