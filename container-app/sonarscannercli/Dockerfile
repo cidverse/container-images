@@ -19,7 +19,7 @@ RUN mkdir -p /cache /app/sonarscanner && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.3-9
+FROM quay.io/cidverse/base-ubi:9.3-13
 ENV PATH="${PATH}:/app/sonarscanner/bin" \
     JAVA_HOME=/usr/lib/jvm/jre-11-openjdk
 
