@@ -1,12 +1,12 @@
 # platforms=linux/amd64,linux/arm64/v8
-# image=quay.io/cidverse/base-coretto-18
+# image=quay.io/cidverse/base-coretto-21
 
 # build
 #
 FROM quay.io/cidverse/base-ubi-build:9.3-1552 AS builder
 
-# renovate: datasource=github-releases depName=corretto/corretto-18
-ARG CORETTO_VERSION=18.0.2.9.1
+# renovate: datasource=github-releases depName=corretto/corretto-21
+ARG CORETTO_VERSION=21.0.2.13.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 

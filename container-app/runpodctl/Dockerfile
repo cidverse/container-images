@@ -8,7 +8,7 @@ FROM quay.io/cidverse/base-ubi-build:9.3-1552 AS builder
 # renovate: datasource=github-releases depName=runpod/runpodctl
 ARG RUNPODCTL_VERSION=1.11.0
 
-RUN file-download /usr/local/bin/runpodctl https://github.com/runpod/runpodctl/releases/download/v${RUNPODCTL_VERSION}/runpodctl-linux-amd && \
+RUN file-download /usr/local/bin/runpodctl https://github.com/runpod/runpodctl/releases/download/v${RUNPODCTL_VERSION}/runpodctl-linux-amd64 && \
     chmod +x /usr/local/bin/runpodctl
 
 # runtime image

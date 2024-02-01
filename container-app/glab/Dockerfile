@@ -1,12 +1,12 @@
-# platforms=linux/amd64
+# platforms=linux/amd64,linux/arm64/v8
 # image=quay.io/cidverse/glab
 
 # build binary
 #
 FROM quay.io/cidverse/base-ubi-build:9.3-1552 AS builder
 
-# renovate: datasource=gitlab-releases depName=profclems/glab
-ARG GLAB_VERSION=1.25.0
+# renovate: datasource=gitlab-releases depName=gitlab-org/cli
+ARG GLAB_VERSION=1.36.0
 ARG TARGETOS
 ARG TARGETARCH
 

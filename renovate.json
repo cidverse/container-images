@@ -44,6 +44,7 @@
         "google/osv-scanner",
         "bitnami-labs/sealed-secrets",
         "containers/buildah",
+        "containers/skopeo",
         "microsoft/ApplicationInspector",
         "securego/gosec",
         "codecov/uploader",
@@ -55,7 +56,20 @@
         "corretto/corretto-8",
         "corretto/corretto-11",
         "corretto/corretto-17",
-        "corretto/corretto-21"
+        "corretto/corretto-21",
+        "runpod/runpodctl"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "assignAutomerge": false,
+      "ignoreTests": true
+    },
+    {
+      "matchDatasources": ["gitlab-releases"],
+      "matchPackageNames": [
+        "gitlab-org/cli"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
