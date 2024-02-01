@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/build-go:1.21.0 AS builder
+FROM quay.io/cidverse/build-go:1.21.4 AS builder
 
 # renovate: datasource=github-releases depName=google/osv-scanner
 ARG OSVSCANNER_VERSION=1.6.2
