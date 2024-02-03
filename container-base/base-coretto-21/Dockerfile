@@ -16,6 +16,8 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
     tar -xf "/cache/amazon-corretto-${CORETTO_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz" -C /tmp && \
     mkdir -p /usr/lib/jvm/coretto && \
     mv /tmp/amazon-corretto-${CORETTO_VERSION}-${TARGETOS}-${TARGETARCH}/* /usr/lib/jvm/coretto && \
+    # dependencies \
+    pkg-install-rootfs zlib-devel && \
     # gradle and maven wrapper needs these
     mkdir -p /rootfs/usr/bin && \
     cp /usr/bin/xargs /rootfs/usr/bin/xargs && \
@@ -31,6 +33,7 @@ ADD scripts/* /usr/local/bin/
 
 ENV JAVA_HOME=/usr/lib/jvm/coretto
 ENV PATH="${PATH}:/usr/lib/jvm/coretto/bin"
-RUN java --version
+RUN chmod +x /usr/local/bin/* && \
+    java --version
 
 CMD ["java"]
