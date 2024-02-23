@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-dotnet-sdk:8.0.100 as builder
 
 # renovate: datasource=github-releases depName=microsoft/ApplicationInspector
-ARG APPINSPECTOR_VERSION=1.9.20
+ARG APPINSPECTOR_VERSION=1.9.21
 
 RUN dotnet tool install --global Microsoft.CST.ApplicationInspector.CLI --version ${APPINSPECTOR_VERSION}
 
