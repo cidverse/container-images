@@ -25,7 +25,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64;
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.3-13
+FROM quay.io/cidverse/base-ubi:9.3-15
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/jvm/temurin /usr/lib/jvm/temurin
