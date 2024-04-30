@@ -21,7 +21,7 @@ RUN gpg --with-fingerprint --keyserver pgp.mit.edu --recv-keys 12C74390F9AAC728 
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.3-15
+FROM quay.io/cidverse/base-ubi:9.4-6
 
 COPY --from=builder /usr/local/bin/mc /usr/local/bin/mc
 RUN mc --version
