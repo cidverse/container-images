@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.3-1612 AS builder
 
 # renovate: datasource=github-releases depName=upx/upx
-ARG UPX_VERSION=4.2.3
+ARG UPX_VERSION=4.2.4
 ARG TARGETOS
 ARG TARGETARCH
 
