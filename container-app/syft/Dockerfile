@@ -3,7 +3,7 @@
 
 # build binary
 # 
-FROM quay.io/cidverse/base-ubi-build:9.3-1612 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-949.1714662671 AS builder
 
 # renovate: datasource=github-releases depName=anchore/syft
 ARG SYFT_VERSION=1.4.1
