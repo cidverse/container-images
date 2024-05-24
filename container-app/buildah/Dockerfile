@@ -11,7 +11,7 @@
 FROM quay.io/cidverse/build-go:1.22.2 AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
-ARG BUILDAH_VERSION=1.35.4
+ARG BUILDAH_VERSION=1.36.0
 
 # bats, btrfs-progs-devel go-md2man
 RUN pkg-install device-mapper-devel glib2-devel gpgme-devel libassuan-devel libseccomp-devel bzip2 runc skopeo-containers && \
