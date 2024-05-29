@@ -15,7 +15,7 @@ RUN file-download "/usr/local/bin/slsa-verifier" "https://github.com/slsa-framew
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6
+FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
 
 COPY --from=builder /usr/local/bin/slsa-verifier /usr/local/bin/slsa-verifier
 RUN slsa-verifier version
