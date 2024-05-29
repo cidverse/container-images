@@ -18,7 +18,7 @@ RUN curl -L -o /usr/local/bin/shellcheck-sarif https://github.com/psastras/sarif
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6
+FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
 
 COPY --from=builder /usr/local/bin/shellcheck-sarif /usr/local/bin/shellcheck-sarif
 COPY --from=builder /usr/local/bin/sarif-fmt /usr/local/bin/sarif-fmt

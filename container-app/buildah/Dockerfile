@@ -24,7 +24,7 @@ RUN pkg-install device-mapper-devel glib2-devel gpgme-devel libassuan-devel libs
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6
+FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/buildah /usr/local/bin/buildah

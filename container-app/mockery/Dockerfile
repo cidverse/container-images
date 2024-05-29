@@ -19,7 +19,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x86_
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6
+FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
 
 COPY --from=builder /usr/local/bin/mockery /usr/local/bin/mockery
 RUN mockery --version

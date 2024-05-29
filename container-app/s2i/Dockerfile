@@ -18,7 +18,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/source-to-ima
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6
+FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
 
 COPY --from=builder /usr/local/bin/s2i /usr/local/bin/s2i
 COPY --from=builder /usr/local/bin/sti /usr/local/bin/sti
