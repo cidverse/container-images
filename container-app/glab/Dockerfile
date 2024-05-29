@@ -3,7 +3,7 @@
 
 # build binary
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-949.1714662671 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-949.1716471857 AS builder
 
 # renovate: datasource=gitlab-releases depName=gitlab-org/cli
 ARG GLAB_VERSION=1.41.0
