@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.4-949.1716471857 AS builder
 
 # renovate: datasource=github-releases depName=cue-lang/cue
-ARG CUE_VERSION=0.8.2
+ARG CUE_VERSION=0.9.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
