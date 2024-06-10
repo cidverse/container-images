@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.4-949.1716471857 AS builder
 
 # renovate: datasource=github-releases depName=anchore/syft
-ARG SYFT_VERSION=1.5.0
+ARG SYFT_VERSION=1.6.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
