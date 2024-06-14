@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-949.1716471857 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1134 AS builder
 
 # renovate: datasource=github-releases depName=psastras/sarif-rs
 ARG SARIFRS_VERSION=0.4.0
