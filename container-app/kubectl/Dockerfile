@@ -15,7 +15,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${K8S_VER
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
+FROM quay.io/cidverse/base-ubi:9.4-9
 
 RUN mkdir -p /app/.kube
 ADD entrypoint.sh /app/entrypoint.sh

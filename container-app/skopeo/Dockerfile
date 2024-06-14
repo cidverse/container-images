@@ -20,7 +20,7 @@ RUN pkg-install gpgme-devel libassuan-devel device-mapper-devel && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
+FROM quay.io/cidverse/base-ubi:9.4-9
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/skopeo /usr/local/bin/skopeo

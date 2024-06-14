@@ -12,7 +12,7 @@ RUN GOBIN=/usr/local/bin/ go install github.com/google/osv-scanner/cmd/osv-scann
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-6.1716471860
+FROM quay.io/cidverse/base-ubi:9.4-9
 
 COPY --from=builder /usr/local/bin/osv-scanner /usr/local/bin/osv-scanner
 
