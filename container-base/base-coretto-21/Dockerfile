@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-949.1716471857 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1134 AS builder
 
 # renovate: datasource=github-releases depName=corretto/corretto-21
 ARG CORETTO_VERSION=21.0.3.9.1
