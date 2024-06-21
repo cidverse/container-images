@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-go:1.22.2 AS builder
 
 # renovate: datasource=github-releases depName=google/osv-scanner
-ARG OSVSCANNER_VERSION=1.7.4
+ARG OSVSCANNER_VERSION=1.8.1
 
 RUN GOBIN=/usr/local/bin/ go install github.com/google/osv-scanner/cmd/osv-scanner@v${OSVSCANNER_VERSION}
 
