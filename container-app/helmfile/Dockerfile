@@ -29,7 +29,7 @@ RUN file-download "/cache/helm-${HELMFILE_RELEASE_REF}.tar.gz" "https://github.c
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-9
+FROM quay.io/cidverse/base-ubi:9.4-13
 
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 COPY --from=builder /usr/local/bin/helmfile /usr/local/bin/helmfile
