@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/build-go:1.22.2 AS builder
+FROM quay.io/cidverse/build-go:1.22.5 AS builder
 
 # renovate: datasource=github-releases depName=twitchdev/twitch-cli
 ARG TWITCHCLI_VERSION=1.1.24

@@ -8,7 +8,7 @@
 
 # build image
 # 
-FROM quay.io/cidverse/build-go:1.22.2 AS builder
+FROM quay.io/cidverse/build-go:1.22.5 AS builder
 
 # renovate: datasource=github-releases depName=containers/buildah
 ARG BUILDAH_VERSION=1.37.0
