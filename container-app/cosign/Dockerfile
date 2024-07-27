@@ -3,7 +3,7 @@
 
 # build image
 # 
-FROM quay.io/cidverse/base-ubi-build:9.4-1134 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
 
 # renovate: datasource=github-releases depName=sigstore/cosign
 ARG COSIGN_VERSION=2.2.4

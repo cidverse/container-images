@@ -4,7 +4,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1134 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
 
 # renovate: datasource=github-releases depName=graalvm/graalvm-ce-builds
 ARG GRAALVM_VERSION=vm-22.3.0
