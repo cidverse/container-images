@@ -47,6 +47,7 @@ RUN echo -e "app:1:999\napp:1001:64535" > /etc/subuid && \
     touch /app/.auth/auth.json
 ENV BUILDAH_ISOLATION chroot
 ENV REGISTRY_AUTH_FILE /app/.docker/config.json
+ENV PODMAN_IGNORE_CGROUPSV1_WARNING true
 
 VOLUME /var/lib/containers
 VOLUME /app/.local/share/containers

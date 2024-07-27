@@ -14,6 +14,8 @@ ARG HELM_VERSION=3.15.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
+RUN pkg-install-rootfs git curl tar
+
 ENV HELM_RELEASE_REF=v${HELM_VERSION}-${TARGETOS}-${TARGETARCH}
 RUN curl https://get.helm.sh/KEYS | gpg --import && \
     file-download "/cache/helm-${HELM_RELEASE_REF}.tar.gz" "https://get.helm.sh/helm-${HELM_RELEASE_REF}.tar.gz" && \
@@ -31,9 +33,11 @@ RUN file-download "/cache/helm-${HELMFILE_RELEASE_REF}.tar.gz" "https://github.c
 #
 FROM quay.io/cidverse/base-ubi:9.4-13
 
+COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
 COPY --from=builder /usr/local/bin/helmfile /usr/local/bin/helmfile
-RUN helm version && \
+RUN helmfile init --force && \
+    helm version && \
     helmfile --version
 
 CMD ["helmfile"]
