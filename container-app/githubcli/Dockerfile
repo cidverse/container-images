@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-go:1.22.5 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
-ARG GITHUBCLI_VERSION=2.53.0
+ARG GITHUBCLI_VERSION=2.54.0
 
 RUN pkg-install-rootfs git && \
     mkdir -p /cache && \
