@@ -3,7 +3,7 @@
 
 # runtime image
 #
-FROM quay.io/cidverse/base-python:3.11.2
+FROM quay.io/cidverse/base-python:3.12.3
 
 # renovate: datasource=pypi depName=poetry
 ARG POETRY_VERSION=1.4.2

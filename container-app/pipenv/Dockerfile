@@ -3,7 +3,7 @@
 
 # runtime image
 #
-FROM quay.io/cidverse/base-python:3.11.2
+FROM quay.io/cidverse/base-python:3.12.3
 
 # renovate: datasource=pypi depName=pipenv
 ARG PIPENV_VERSION=2024.0.1
