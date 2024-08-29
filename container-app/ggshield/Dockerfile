@@ -1,21 +1,28 @@
-# platforms=linux/amd64,linux/arm64/v8
+# platforms=linux/amd64
 # image=quay.io/cidverse/ggshield
 
-# build binary
+# build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
+FROM quay.io/cidverse/build-python:3.12.3 AS builder
 
 # renovate: datasource=pypi depName=ggshield
 ARG GGSHIELD_VERSION=1.31.0
 
-RUN pkg-install python3-pip ca-certificates && \
-    pkg-install-rootfs python3 git && \
-    pip3 install --root="/rootfs" --no-warn-script-location ggshield==${GGSHIELD_VERSION}
+ENV PIPX_HOME=/app/.local/share/pipx
+ENV PIPX_BIN_DIR=/app/.local/bin
+ENV PIPX_DEFAULT_PYTHON=/usr/bin/python3
+RUN pkg-install-rootfs git && \
+    pipx install --include-deps ggshield==${GGSHIELD_VERSION} && \
+    pipx list
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-13
+FROM quay.io/cidverse/base-python:3.12.3
 
 COPY --from=builder /rootfs /
+COPY --from=builder /app /app
+
+ENV PATH=/app/.local/bin:$PATH
+RUN ggshield --version
 
 CMD ["ggshield"]

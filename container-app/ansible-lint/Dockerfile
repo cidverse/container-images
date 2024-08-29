@@ -1,4 +1,4 @@
-# platforms=linux/amd64,linux/arm64/v8
+# platforms=linux/amd64
 # image=quay.io/cidverse/ansible-lint
 
 # build image

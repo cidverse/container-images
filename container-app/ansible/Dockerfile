@@ -1,9 +1,9 @@
-# platforms=linux/amd64,linux/arm64/v8
+# platforms=linux/amd64
 # image=quay.io/cidverse/ansible
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
+FROM quay.io/cidverse/build-python:3.12.3 AS builder
 
 # renovate: datasource=pypi depName=ansible
 ARG ANSIBLE_VERSION=10.3.0
@@ -11,18 +11,24 @@ ARG ANSIBLE_VERSION=10.3.0
 # renovate: datasource=pypi depName=docker
 ARG DOCKER_VERSION=7.1.0
 
-RUN pkg-install python3-pip ca-certificates && \
-    pkg-install-rootfs python3 sshpass && \
-    pip3 install --upgrade pip && \
-    pip3 install --root="/rootfs" --no-warn-script-location ansible==${ANSIBLE_VERSION} && \
-    pip3 install --root="/rootfs" --no-warn-script-location docker==${DOCKER_VERSION}
+ENV PIPX_HOME=/app/.local/share/pipx
+ENV PIPX_BIN_DIR=/app/.local/bin
+ENV PIPX_DEFAULT_PYTHON=/usr/bin/python3
+RUN pkg-install-rootfs sshpass && \
+    pipx install --include-deps ansible==${ANSIBLE_VERSION} && \
+    pipx inject ansible docker==${DOCKER_VERSION} && \
+    pipx list
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-13
+FROM quay.io/cidverse/base-python:3.12.3
 
 COPY --from=builder /rootfs /
+COPY --from=builder /app /app
+
+ENV PATH=/app/.local/bin:$PATH
 RUN mkdir -p /app/.ansible && \
-    chmod -R 777 /app/.ansible
+    chmod -R 777 /app/.ansible && \
+    ansible --version
 
 CMD ["ansible"]
