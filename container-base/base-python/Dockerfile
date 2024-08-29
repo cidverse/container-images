@@ -5,7 +5,7 @@
 #
 FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
 
-## renovate: datasource=github-releases depName=python/cpython
+# renovate: datasource=github-releases depName=python/cpython
 ARG PYTHON_VERSION=3.12.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
