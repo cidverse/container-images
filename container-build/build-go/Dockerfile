@@ -1,4 +1,4 @@
-# platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
+# platforms=linux/amd64
 # image=quay.io/cidverse/build-go
 
 # build
@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
 
 # renovate: datasource=github-releases depName=golang/go
-ARG GO_VERSION=1.22.5
+ARG GO_VERSION=1.23.0
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
