@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1227 AS builder
 
 # renovate: datasource=github-releases depName=openshift/source-to-image
 ARG S2I_VERSION=1.4.0

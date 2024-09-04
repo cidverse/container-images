@@ -3,7 +3,7 @@
 
 # compile the twitch cli binary
 # 
-FROM quay.io/cidverse/base-ubi-build:9.4-1194 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1227 AS builder
 
 # renovate: datasource=github-releases depName=upx/upx
 ARG UPX_VERSION=4.2.4
