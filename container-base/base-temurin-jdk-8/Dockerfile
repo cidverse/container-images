@@ -33,6 +33,7 @@ ADD scripts/* /usr/local/bin/
 
 ENV JAVA_HOME=/usr/lib/jvm/temurin
 ENV PATH="${PATH}:/usr/lib/jvm/temurin/bin"
-RUN java -version
+RUN chmod +x /usr/local/bin/* && \
+    java -version
 
 CMD ["java"]

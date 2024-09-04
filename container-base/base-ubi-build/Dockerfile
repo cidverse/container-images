@@ -15,7 +15,8 @@ ADD scripts/* /usr/local/bin
 ADD config/dnf.conf /etc/dnf/dnf.conf
 
 # build utils
-RUN pkg-install tar xz gzip unzip git gpg jq glibc-static make gcc findutils zlib && \
+RUN chmod +x /usr/local/bin/* && \
+    pkg-install tar xz gzip unzip git gpg jq glibc-static make gcc findutils zlib && \
     microdnf upgrade -y && \
     microdnf clean all
 
