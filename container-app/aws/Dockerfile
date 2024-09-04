@@ -18,7 +18,7 @@ RUN pkg-install-rootfs groff-base less zlib && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-13
+FROM quay.io/cidverse/base-ubi:9.4-15
 
 COPY --from=builder /rootfs /
 COPY --from=builder /tmp/aws /tmp/aws

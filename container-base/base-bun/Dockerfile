@@ -21,7 +21,7 @@ RUN pkg-install-rootfs unzip && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-13
+FROM quay.io/cidverse/base-ubi:9.4-15
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/bun /usr/local/bin/bun
