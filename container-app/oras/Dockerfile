@@ -16,7 +16,7 @@ RUN file-download "/cache/oras-${ORAS_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz"
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-13
+FROM quay.io/cidverse/base-ubi:9.4-15
 
 COPY --from=builder /usr/local/bin/oras /usr/local/bin/oras
 ENV ORAS_CACHE=/app/cache/oras
