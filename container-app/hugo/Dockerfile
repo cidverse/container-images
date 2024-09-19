@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.4-1227.1725849298 AS builder
 
 # renovate: datasource=github-releases depName=gohugoio/hugo
-ARG HUGO_VERSION=0.134.2
+ARG HUGO_VERSION=0.134.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
