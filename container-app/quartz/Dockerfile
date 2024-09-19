@@ -12,7 +12,7 @@ RUN pkg-install git && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-node:22.8.0
+FROM quay.io/cidverse/base-node:22.9.0
 COPY --from=builder /app/quartz /app/quartz
 ENV PATH="${PATH}:/app/quartz"
 
