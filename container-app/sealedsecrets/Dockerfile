@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1227.1725849298 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.4-1227.1726694542 AS builder
 
 # renovate: datasource=github-releases depName=bitnami-labs/sealed-secrets
 ARG SEALEDSECRET_VERSION=0.27.1
