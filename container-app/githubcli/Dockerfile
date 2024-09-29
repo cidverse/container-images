@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/build-go:1.23.0 AS builder
+FROM quay.io/cidverse/build-go:1.23.1 AS builder
 
 # renovate: datasource=github-releases depName=cli/cli
 ARG GITHUBCLI_VERSION=2.57.0
