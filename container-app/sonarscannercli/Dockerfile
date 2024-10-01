@@ -13,9 +13,11 @@ ARG TARGETARCH=amd64
 RUN pkg-install-rootfs zlib.i686 git python3 java-11-openjdk-headless
 
 RUN mkdir -p /cache /app/sonarscanner && \
-    file-download "/cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-${TARGETOS}.zip" "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-${TARGETOS}.zip" && \
-    unzip /cache/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-${TARGETOS}.zip -d /tmp && \
-    mv /tmp/sonar-scanner-${SONARSCANNERCLI_VERSION}-${TARGETOS}/* /app/sonarscanner
+    if [ "$TARGETOS/$TARGETARCH" == "linux/amd64" ]; then export TARGETARCH=x64; fi && \
+    if [ "$TARGETOS/$TARGETARCH" == "linux/arm64" ]; then export TARGETARCH=arm64; fi && \
+    file-download "/cache/sonar-scanner-cli.zip" "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONARSCANNERCLI_VERSION}-${TARGETOS}-${TARGETARCH}.zip" && \
+    unzip /cache/sonar-scanner-cli.zip -d /tmp && \
+    mv /tmp/sonar-scanner-${SONARSCANNERCLI_VERSION}-${TARGETOS}-${TARGETARCH}/* /app/sonarscanner
 
 # runtime image
 #
