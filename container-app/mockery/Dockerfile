@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.4-1227.1726694542 AS builder
 
 # renovate: datasource=github-releases depName=vektra/mockery
-ARG MOCKERY_VERSION=2.46.2
+ARG MOCKERY_VERSION=2.46.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
