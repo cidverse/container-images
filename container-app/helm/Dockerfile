@@ -22,7 +22,7 @@ RUN curl https://get.helm.sh/KEYS | gpg --import && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-15
+FROM quay.io/cidverse/base-ubi:9.5-1730497698
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/helm /usr/local/bin/helm
