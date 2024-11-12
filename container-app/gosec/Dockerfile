@@ -17,7 +17,7 @@ RUN file-download "/cache/gosec-${GOSEC_VERSION}-${TARGETOS}-${TARGETARCH}.tar.g
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-15
+FROM quay.io/cidverse/base-ubi:9.5-1730497698
 
 COPY --from=builder /usr/local/bin/gosec /usr/local/bin/gosec
 RUN gosec -version

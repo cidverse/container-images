@@ -22,7 +22,7 @@ RUN pkg-install-rootfs zlib-devel && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.4-15
+FROM quay.io/cidverse/base-ubi:9.5-1730497698
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/lib/jvm/temurin /usr/lib/jvm/temurin
