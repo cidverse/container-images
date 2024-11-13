@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.4-1227.1726694542 as builder
+FROM quay.io/cidverse/base-ubi-build:9.5-1730489338 as builder
 
 # renovate: datasource=github-releases depName=dotnet/runtime
 ARG DOTNET_RUNTIME_VERSION=8.0.11
