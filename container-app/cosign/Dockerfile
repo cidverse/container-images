@@ -16,7 +16,7 @@ RUN file-download "/cache/cosign-${COSIGN_VERSION}-${TARGETOS}-${TARGETARCH}" "h
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1730497698
+FROM quay.io/cidverse/base-ubi:9.5-1731519709
 
 COPY --from=builder /usr/local/bin/cosign /usr/local/bin/cosign
 RUN cosign version
