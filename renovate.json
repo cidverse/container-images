@@ -10,7 +10,8 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": [
         "registry.access.redhat.com/ubi9-micro",
-        "registry.access.redhat.com/ubi9-minimal"
+        "registry.access.redhat.com/ubi9-minimal",
+        "quay.io/cidverse/base-node"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
@@ -57,7 +58,8 @@
         "corretto/corretto-11",
         "corretto/corretto-17",
         "corretto/corretto-21",
-        "runpod/runpodctl"
+        "runpod/runpodctl",
+        "dotnet/runtime"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
@@ -84,7 +86,8 @@
         "pipenv",
         "semgrep",
         "ansible",
-        "ggshield"
+        "ggshield",
+        "ansible-lint"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
