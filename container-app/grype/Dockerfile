@@ -18,7 +18,7 @@ RUN file-download "/cache/grype_${GRYPE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.g
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1730497698
+FROM quay.io/cidverse/base-ubi:9.5-1731519709
 
 COPY --from=builder /usr/local/bin/grype /usr/local/bin/grype
 
