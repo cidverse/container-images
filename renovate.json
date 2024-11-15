@@ -99,7 +99,8 @@
     {
       "matchDatasources": ["npm"],
       "matchPackageNames": [
-        "@techdocs/cli"
+        "@techdocs/cli",
+        "renovate"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
