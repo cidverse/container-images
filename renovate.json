@@ -100,7 +100,8 @@
       "matchDatasources": ["npm"],
       "matchPackageNames": [
         "@techdocs/cli",
-        "renovate"
+        "renovate",
+        "wrangler"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
