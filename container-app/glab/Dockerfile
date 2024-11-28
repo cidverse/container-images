@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.5-1730489338 AS builder
 
 # renovate: datasource=gitlab-releases depName=gitlab-org/cli
-ARG GLAB_VERSION=1.49.0
+ARG GLAB_VERSION=1.50.0
 ARG TARGETOS
 ARG TARGETARCH
 
