@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-node:23.2.0
 
 # renovate: datasource=npm depName=renovate
-ARG RENOVATE_VERSION=39.35.0
+ARG RENOVATE_VERSION=39.36.0
 
 RUN npm install -g renovate@"${RENOVATE_VERSION}"
 
