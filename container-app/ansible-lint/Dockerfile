@@ -9,7 +9,7 @@ FROM quay.io/cidverse/build-python:3.12.3 AS builder
 ARG ANSIBLELINT_VERSION=24.10.0
 
 # renovate: datasource=pypi depName=rpds-py
-ARG RPDSPY_VERSION=0.22.0
+ARG RPDSPY_VERSION=0.22.1
 
 ENV PIPX_HOME=/app/.local/share/pipx
 ENV PIPX_BIN_DIR=/app/.local/bin
