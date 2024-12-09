@@ -3,7 +3,7 @@
 
 # ubi minimal base
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi9-minimal
-ARG UBI_BASE_VERSION=9.5-1731604394
+ARG UBI_BASE_VERSION=9.5-1733767867
 FROM registry.access.redhat.com/ubi9-minimal:$UBI_BASE_VERSION AS ubi-minimal
 
 # image
