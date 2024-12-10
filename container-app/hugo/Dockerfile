@@ -18,7 +18,7 @@ RUN pkg-install-rootfs libstdc++ && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1731519709
+FROM quay.io/cidverse/base-ubi:9.5-1733767087
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/hugo /usr/local/bin/hugo

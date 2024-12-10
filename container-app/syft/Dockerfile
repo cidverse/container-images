@@ -18,7 +18,7 @@ RUN file-download "/cache/syft_${SYFT_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz"
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1731519709
+FROM quay.io/cidverse/base-ubi:9.5-1733767087
 
 COPY --from=builder /usr/local/bin/syft /usr/local/bin/syft
 

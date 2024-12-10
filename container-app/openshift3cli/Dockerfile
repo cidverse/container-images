@@ -17,7 +17,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/origin/releas
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1731519709
+FROM quay.io/cidverse/base-ubi:9.5-1733767087
 
 COPY --from=builder /usr/local/bin/oc /usr/local/bin/oc
 
