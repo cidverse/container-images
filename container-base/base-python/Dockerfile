@@ -14,7 +14,7 @@ RUN pkg-install-rootfs python3.12
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1731519709
+FROM quay.io/cidverse/base-ubi:9.5-1733767087
 
 COPY --from=builder /rootfs /
 RUN ln -s /usr/bin/python3.12 /usr/bin/python3

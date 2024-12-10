@@ -13,7 +13,7 @@ RUN file-download /usr/local/bin/runpodctl https://github.com/runpod/runpodctl/r
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1731519709
+FROM quay.io/cidverse/base-ubi:9.5-1733767087
 
 COPY --from=builder /usr/local/bin/runpodctl /usr/local/bin/runpodctl
 RUN runpodctl version
