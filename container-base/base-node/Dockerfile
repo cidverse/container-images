@@ -3,7 +3,7 @@
 
 # build
 #
-FROM quay.io/cidverse/base-ubi-build:9.5-1730489338 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.5-1733767867 AS builder
 
 # renovate: datasource=github-releases depName=nodejs/node
 ARG NODE_VERSION=23.4.0

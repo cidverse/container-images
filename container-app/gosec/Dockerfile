@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.5-1730489338 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.5-1733767867 AS builder
 
 # renovate: datasource=github-releases depName=securego/gosec
 ARG GOSEC_VERSION=2.21.4
