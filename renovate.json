@@ -87,7 +87,8 @@
         "semgrep",
         "ansible",
         "ggshield",
-        "ansible-lint"
+        "ansible-lint",
+        "rpds-py"
       ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,

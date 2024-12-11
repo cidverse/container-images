@@ -1,4 +1,4 @@
-# platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
+# platforms=linux/amd64,linux/arm64/v8,linux/s390x
 # image=quay.io/cidverse/base-node
 
 # build
