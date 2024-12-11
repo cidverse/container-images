@@ -3,7 +3,7 @@
 
 # runtime image
 #
-FROM quay.io/cidverse/base-node:23.2.0
+FROM quay.io/cidverse/base-node:23.4.0
 
 # renovate: datasource=npm depName=wrangler
 ARG WRANGLER_VERSION=3.95.0
