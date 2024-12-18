@@ -17,7 +17,7 @@ RUN if [ "$TARGETOS/$TARGETARCH" == "linux/ppc64le" ]; then export TARGETARCH=po
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1733767087
+FROM quay.io/cidverse/base-ubi:9.5-1734513256
 
 COPY --from=builder /usr/local/bin/upx /usr/local/bin/upx
 
