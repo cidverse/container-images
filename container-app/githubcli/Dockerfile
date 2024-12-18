@@ -17,7 +17,7 @@ RUN pkg-install-rootfs git && \
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1733767087
+FROM quay.io/cidverse/base-ubi:9.5-1734513256
 
 COPY --from=builder /rootfs /
 COPY --from=builder /usr/local/bin/gh /usr/local/bin/gh

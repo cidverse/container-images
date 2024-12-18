@@ -17,7 +17,7 @@ RUN export DL_URL=$(curl -s https://api.github.com/repos/openshift/okd/releases/
 
 # runtime image
 #
-FROM quay.io/cidverse/base-ubi:9.5-1733767087
+FROM quay.io/cidverse/base-ubi:9.5-1734513256
 
 COPY --from=builder /usr/local/bin/oc /usr/local/bin/oc
 
