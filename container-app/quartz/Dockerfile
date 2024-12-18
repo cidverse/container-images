@@ -3,7 +3,7 @@
 
 # build image
 #
-FROM quay.io/cidverse/base-ubi-build:9.5-1733767867 AS builder
+FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
 ARG QUARTZ_VERSION=4.0.0
 
