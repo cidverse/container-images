@@ -30,4 +30,6 @@ COPY --from=builder /usr/lib/dotnet /usr/lib/dotnet
 ENV PATH="${PATH}:/usr/lib/dotnet:/usr/lib/dotnet/tools"
 ENV DOTNET_ROOT="/usr/lib/dotnet"
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
-RUN dotnet --info
+ENV DOTNET_NOLOGO=true
+RUN dotnet dev-certs https --trust && \
+    dotnet --info
