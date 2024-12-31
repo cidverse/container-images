@@ -5,8 +5,8 @@
 #
 FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
-# renovate: datasource=github-releases depName=golang/go
-ARG GO_VERSION=1.23.3
+# renovate: datasource=github-tags depName=golang/go
+ARG GO_VERSION=1.23.4
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
