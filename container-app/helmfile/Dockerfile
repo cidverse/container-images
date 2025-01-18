@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
 # renovate: datasource=github-releases depName=helmfile/helmfile
-ARG HELMFILE_VERSION=0.169.2
+ARG HELMFILE_VERSION=0.170.0
 
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=3.17.0
