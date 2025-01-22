@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-python:3.12.3
 
 # renovate: datasource=pypi depName=pipenv
-ARG PIPENV_VERSION=2024.4.0
+ARG PIPENV_VERSION=2024.4.1
 
 RUN python3 -m ensurepip --upgrade && \
     pip3 install pipenv==${PIPENV_VERSION} && \
