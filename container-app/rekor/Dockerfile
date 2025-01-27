@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
 # renovate: datasource=github-releases depName=sigstore/rekor
-ARG REKOR_VERSION=1.3.8
+ARG REKOR_VERSION=1.3.9
 ARG TARGETOS
 ARG TARGETARCH
 
