@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-python:3.12.3 AS builder
 
 # renovate: datasource=pypi depName=ansible
-ARG ANSIBLE_VERSION=11.1.0
+ARG ANSIBLE_VERSION=11.2.0
 
 # renovate: datasource=pypi depName=docker
 ARG DOCKER_VERSION=7.1.0
