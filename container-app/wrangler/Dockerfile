@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-node:23.4.0
 
 # renovate: datasource=npm depName=wrangler
-ARG WRANGLER_VERSION=3.109.1
+ARG WRANGLER_VERSION=3.109.2
 
 RUN npm install -g wrangler@"${WRANGLER_VERSION}" && \
     wrangler --version
