@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-python:3.12.3 AS builder
 
 # renovate: datasource=pypi depName=ggshield
-ARG GGSHIELD_VERSION=1.37.0
+ARG GGSHIELD_VERSION=1.38.0
 
 ENV PIPX_HOME=/app/.local/share/pipx
 ENV PIPX_BIN_DIR=/app/.local/bin
