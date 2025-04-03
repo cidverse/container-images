@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/build-python:3.12.3 AS builder
 
 # renovate: datasource=pypi depName=ansible-lint
-ARG ANSIBLELINT_VERSION=25.2.0
+ARG ANSIBLELINT_VERSION=25.2.1
 
 # renovate: datasource=pypi depName=rpds-py
 ARG RPDSPY_VERSION=0.24.0
