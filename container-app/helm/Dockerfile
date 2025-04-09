@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION=3.17.2
+ARG HELM_VERSION=3.17.3
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
