@@ -6,7 +6,7 @@
 FROM quay.io/cidverse/base-ubi-build:9.5-1734497536 AS builder
 
 # renovate: datasource=github-releases depName=corretto/corretto-21
-ARG CORETTO_VERSION=21.0.6.7.1
+ARG CORETTO_VERSION=21.0.7.6.1
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
