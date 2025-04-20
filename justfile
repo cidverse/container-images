@@ -43,6 +43,7 @@ publish-all:
     scripts/publish.sh "minio-client"
     scripts/publish.sh "mockery"
     scripts/publish.sh "graalvm"
+    scripts/publish.sh "gitlab-sarif-converter"
     scripts/publish.sh "normalizeci"
     scripts/publish.sh "openshift"
     scripts/publish.sh "oras"
