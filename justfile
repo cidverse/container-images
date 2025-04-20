@@ -36,6 +36,7 @@ publish-all:
     scripts/publish.sh "helm"
     scripts/publish.sh "helmfile"
     scripts/publish.sh "hugo"
+    scripts/publish.sh "jdk"
     scripts/publish.sh "kubectl"
     scripts/publish.sh "kubeseal"
     scripts/publish.sh "liquibase"
