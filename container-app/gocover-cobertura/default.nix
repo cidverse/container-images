@@ -16,7 +16,9 @@ in
     name = "gocover-cobertura";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [];
+    additionalPackages = [
+      pkgs.go
+    ];
     arch = "amd64";
   };
 }

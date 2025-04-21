@@ -18,8 +18,9 @@ We make use of nix `dockerTools` to split each package into a separate layer, al
 
 All images are available in the following registries:
 
-- http://ghcr.io/cidverse
-- https://quay.io/organization/cidverse
+- [ghcr.io/cidverse](https://github.com/orgs/cidverse/packages?ecosystem=container)
+- [registry.gitlab.com/cidverse/container-images](https://gitlab.com/cidverse/container-images/container_registry)
+- [quay.io/cidverse](https://quay.io/organization/cidverse)
 
 ## Image Catalog
 
