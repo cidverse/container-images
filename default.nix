@@ -48,6 +48,7 @@ in
   gh = pkgs.callPackage ./container-app/gh commonArgs;
   gitleaks = pkgs.callPackage ./container-app/gitleaks commonArgs;
   glab = pkgs.callPackage ./container-app/glab commonArgs;
+  go-junit-report = pkgs.callPackage ./container-app/go-junit-report commonArgs;
   gosec = pkgs.callPackage ./container-app/gosec commonArgs;
   grype = pkgs.callPackage ./container-app/grype commonArgs;
   hadolint = pkgs.callPackage ./container-app/hadolint commonArgs;
