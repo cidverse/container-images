@@ -40,6 +40,7 @@ publish-all:
     scripts/publish.sh "kubectl"
     scripts/publish.sh "kubeseal"
     scripts/publish.sh "liquibase"
+    scripts/publish.sh "maven"
     scripts/publish.sh "minio-client"
     scripts/publish.sh "mockery"
     scripts/publish.sh "graalvm"

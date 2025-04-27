@@ -60,6 +60,7 @@ in
   kubectl = pkgs.callPackage ./container-app/kubectl commonArgs;
   kubeseal = pkgs.callPackage ./container-app/kubeseal commonArgs;
   liquibase = pkgs.callPackage ./container-app/liquibase commonArgs;
+  maven = pkgs.callPackage ./container-app/maven commonArgs;
   minio-client = pkgs.callPackage ./container-app/minio-client commonArgs;
   mockery = pkgs.callPackage ./container-app/mockery commonArgs;
   graalvm = pkgs.callPackage ./container-app/graalvm commonArgs;
