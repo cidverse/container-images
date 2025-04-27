@@ -65,5 +65,6 @@ publish-all:
     scripts/publish.sh "syft"
     scripts/publish.sh "twitch-cli"
     scripts/publish.sh "upx"
+    scripts/publish.sh "uv"
     scripts/publish.sh "wrangler"
     scripts/publish.sh "zizmor"

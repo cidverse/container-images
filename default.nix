@@ -86,6 +86,7 @@ in
   trivy = pkgs.callPackage ./container-app/trivy commonArgs;
   twitch-cli = pkgs.callPackage ./container-app/twitch-cli commonArgs;
   upx = pkgs.callPackage ./container-app/upx commonArgs;
+  uv = pkgs.callPackage ./container-app/uv commonArgs;
   wrangler = pkgs.callPackage ./container-app/wrangler commonArgs;
   zizmor = pkgs.callPackage ./container-app/zizmor commonArgs;
   primecodegen-app = pkgs.callPackage ./container-app/primecodegen-app commonArgs;
