@@ -22,8 +22,8 @@ let
 in
 {
   # base packages
-  base-dotnet-sdk = pkgs.callPackage ./container-base/base-dotnet-sdk commonArgs;
-  base-dotnet-runtime = pkgs.callPackage ./container-base/base-dotnet-runtime commonArgs;
+  dotnet-sdk = pkgs.callPackage ./container-base/dotnet-sdk commonArgs;
+  dotnet-runtime = pkgs.callPackage ./container-base/dotnet-runtime commonArgs;
   base-python = pkgs.callPackage ./container-base/base-python commonArgs;
   base-jdk-11 = pkgs.callPackage ./container-base/base-jdk-11 commonArgs;
   base-jdk-17 = pkgs.callPackage ./container-base/base-jdk-17 commonArgs;
@@ -51,6 +51,7 @@ in
   go-junit-report = pkgs.callPackage ./container-app/go-junit-report commonArgs;
   gocover-cobertura = pkgs.callPackage ./container-app/gocover-cobertura commonArgs;
   gosec = pkgs.callPackage ./container-app/gosec commonArgs;
+  golangci-lint = pkgs.callPackage ./container-app/golangci-lint commonArgs;
   grype = pkgs.callPackage ./container-app/grype commonArgs;
   hadolint = pkgs.callPackage ./container-app/hadolint commonArgs;
   helm = pkgs.callPackage ./container-app/helm commonArgs;

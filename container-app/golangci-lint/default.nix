@@ -7,15 +7,16 @@
 
 let
   containerSupport = import (self + "/lib/container-support.nix") { inherit pkgs; };
-  rootPackage = pkgs-unstable.dotnet-sdk_9;
+  rootPackage = pkgs-unstable.golangci-lint;
 in
 {
   image-amd64 = containerSupport.buildImage {
-    name = "base-dotnet-sdk";
+    name = "golangci-lint";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ ];
-    maxLayers = 80;
+    additionalPackages = [
+      pkgs-unstable.go
+    ];
     arch = "amd64";
   };
 }
