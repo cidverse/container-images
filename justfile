@@ -11,6 +11,7 @@ publish-all:
     # base images
     scripts/publish.sh "dotnet-sdk"
     scripts/publish.sh "dotnet-runtime"
+    scripts/publish.sh "node-sdk"
     scripts/publish.sh "base-python"
     scripts/publish.sh "base-jdk-11"
     scripts/publish.sh "base-jdk-17"

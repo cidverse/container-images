@@ -24,6 +24,7 @@ in
   # base packages
   dotnet-sdk = pkgs.callPackage ./container-base/dotnet-sdk commonArgs;
   dotnet-runtime = pkgs.callPackage ./container-base/dotnet-runtime commonArgs;
+  node-sdk = pkgs.callPackage ./container-base/node-sdk commonArgs;
   base-python = pkgs.callPackage ./container-base/base-python commonArgs;
   base-jdk-11 = pkgs.callPackage ./container-base/base-jdk-11 commonArgs;
   base-jdk-17 = pkgs.callPackage ./container-base/base-jdk-17 commonArgs;
