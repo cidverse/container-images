@@ -14,7 +14,10 @@ in
     name = "ansible-lint";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ ];
+    additionalPackages = [ pkgs.glibcLocales ];
     arch = "amd64";
+    env = [
+      "LC_ALL=C.UTF-8"
+    ];
   };
 }

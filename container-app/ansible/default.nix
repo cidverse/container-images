@@ -14,7 +14,10 @@ in
     name = "ansible";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ pkgs.sshpass ];
+    additionalPackages = [ pkgs.sshpass pkgs.glibcLocales ];
     arch = "amd64";
+    env = [
+      "LC_ALL=C.UTF-8"
+    ];
   };
 }
