@@ -21,6 +21,9 @@ let
   };
 in
 {
+  # ci images
+  ci-gitlab = pkgs.callPackage ./container-ci/gitlab-ci commonArgs;
+
   # base packages
   dotnet-sdk = pkgs.callPackage ./container-base/dotnet-sdk commonArgs;
   dotnet-runtime = pkgs.callPackage ./container-base/dotnet-runtime commonArgs;
@@ -33,6 +36,7 @@ in
   # build images
   build-go = pkgs.callPackage ./container-build/build-go commonArgs;
   build-python = pkgs.callPackage ./container-build/build-python commonArgs;
+  cargo = pkgs.callPackage ./container-build/cargo commonArgs;
 
   # app images
   ansible = pkgs.callPackage ./container-app/ansible commonArgs;

@@ -10,6 +10,7 @@
         mkdir $out
         mkdir -m 0770 $out/tmp
         mkdir -m 0770 $out/var
+        mkdir -m 0770 -p $out/usr/local/bin
         mkdir -m 0770 -p $out/home/appuser
       '';
 
@@ -79,9 +80,11 @@
         extraCommands =
           extraCommands
           + ''
-            chmod -R g=u tmp var home
+            chmod -R g=u tmp var home usr/local/bin
           '';
-
+        fakeRootCommands = ''
+          chown -R 1001 /home/appuser
+        '';
         config = {
           Entrypoint = entrypoint;
           Cmd = defaultCmd;
