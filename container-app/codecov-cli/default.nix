@@ -14,7 +14,9 @@ in
     name = "codecov-cli";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ ];
+    additionalPackages = [
+      pkgs.git
+    ];
     arch = "amd64";
   };
 }
