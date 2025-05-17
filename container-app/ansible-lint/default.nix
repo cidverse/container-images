@@ -20,7 +20,7 @@ in
     ];
     arch = "amd64";
     env = [
-      "LC_ALL=C.UTF-8"
+      "LC_ALL=en_US.utf-8"
       "LOCALE_ARCHIVE=${pkgs.glibcLocales}/lib/locale/locale-archive"
     ];
   };

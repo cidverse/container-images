@@ -8,6 +8,9 @@ publish-force +PKG:
     scripts/publish.sh "{{PKG}}" -f
 
 publish-all:
+    # ci images
+    scripts/publish.sh "ci-gitlab"
+    scripts/publish.sh "ci-gitlab-docker"
     # base images
     scripts/publish.sh "dotnet-sdk"
     scripts/publish.sh "dotnet-runtime"

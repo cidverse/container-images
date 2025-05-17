@@ -20,6 +20,7 @@ in
       inputs.nixpkgs-philippheuer.packages.${pkgs.system}.gitlab-sarif-converter # sarif to gitlab code quality conversion
     ];
     arch = "amd64";
+    maxLayers = 100;
     extraCommands = ''
       mkdir -m 0770 -p var/tmp
       mkdir -m 0770 -p etc/containers

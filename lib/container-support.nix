@@ -81,6 +81,7 @@
           extraCommands
           + ''
             chmod -R g=u tmp var home usr/local/bin
+            chmod 777 tmp
           '';
         fakeRootCommands = ''
           chown -R 1001 /home/appuser
@@ -91,7 +92,6 @@
 
           Env = [
             "HOME=/home/appuser"
-            "LC_ALL=C"
             "DISPLAY=:0"
           ] ++ env ++ (if builtins.length extendPath > 0 then [
             "PATH=${builtins.concatStringsSep ":" extendPath}:${defaultPath}"
