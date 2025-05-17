@@ -23,6 +23,7 @@ in
 {
   # ci images
   ci-gitlab = pkgs.callPackage ./container-ci/gitlab-ci commonArgs;
+  ci-gitlab-docker = pkgs.callPackage ./container-ci/gitlab-ci-docker commonArgs;
 
   # base packages
   dotnet-sdk = pkgs.callPackage ./container-base/dotnet-sdk commonArgs;

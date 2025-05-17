@@ -14,10 +14,14 @@ in
     name = "ansible-lint";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ pkgs.glibcLocales ];
+    additionalPackages = [
+      pkgs.glibcLocales
+      pkgs.locale
+    ];
     arch = "amd64";
     env = [
       "LC_ALL=C.UTF-8"
+      "LOCALE_ARCHIVE=${pkgs.glibcLocales}/lib/locale/locale-archive"
     ];
   };
 }
