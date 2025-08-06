@@ -55,6 +55,7 @@
         extraCommands ? "",
         maxLayers ? 120,
         compressor ? "none", # "none", "gz","zstd"
+        user ? "1001",
         entrypoint ? null,
         volumes ? { },
         env ? [ ],
@@ -98,7 +99,7 @@
           ] else []);
           ExposedPorts = { };
           Volumes = volumes;
-          User = "1001";
+          User = "${user}:0";
           WorkingDir = "/home/appuser";
 
           Maintainer = [
