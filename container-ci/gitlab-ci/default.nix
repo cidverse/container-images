@@ -21,11 +21,12 @@ in
     ];
     arch = "amd64";
     maxLayers = 100;
+    user = "0";
     extraCommands = ''
       mkdir -m 0770 -p var/tmp
+      mkdir -m 0770 -p var/lib/shared
+      mkdir -m 0770 -p usr/lib/containers/storage
       mkdir -m 0770 -p etc/containers
-      #echo "1001:100000:65536" > etc/subuid
-      #echo "1001:100000:65536" > etc/subgid
 
       cat > etc/containers/policy.json <<EOF
       {
@@ -69,8 +70,9 @@ in
     env = [
       "PODMAN_IGNORE_CGROUPSV1_WARNING=true"
       "BUILDAH_ISOLATION=chroot"
-      "_CONTAINERS_USERNS_CONFIGURED="
+      "_CONTAINERS_USERNS_CONFIGURED=done"
       "container=oci"
+      "PODMAN_USERNS=host"
     ];
   };
 }

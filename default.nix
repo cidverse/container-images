@@ -33,6 +33,7 @@ in
   base-jdk-11 = pkgs.callPackage ./container-base/base-jdk-11 commonArgs;
   base-jdk-17 = pkgs.callPackage ./container-base/base-jdk-17 commonArgs;
   base-jdk-21 = pkgs.callPackage ./container-base/base-jdk-21 commonArgs;
+  base-jdk-25 = pkgs.callPackage ./container-base/base-jdk-25 commonArgs;
 
   # build images
   build-go = pkgs.callPackage ./container-build/build-go commonArgs;

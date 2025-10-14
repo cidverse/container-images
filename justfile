@@ -9,8 +9,8 @@ publish-force +PKG:
 
 publish-all:
     # ci images
-    scripts/publish.sh "ci-gitlab"
-    scripts/publish.sh "ci-gitlab-docker"
+    #scripts/publish.sh "ci-gitlab"
+    #scripts/publish.sh "ci-gitlab-docker"
     # base images
     scripts/publish.sh "dotnet-sdk"
     scripts/publish.sh "dotnet-runtime"
@@ -19,6 +19,7 @@ publish-all:
     scripts/publish.sh "base-jdk-11"
     scripts/publish.sh "base-jdk-17"
     scripts/publish.sh "base-jdk-21"
+    scripts/publish.sh "base-jdk-25"
     scripts/publish.sh "build-go"
     scripts/publish.sh "build-python"
     # app images

@@ -21,8 +21,5 @@ in
     ];
     maxLayers = 100;
     arch = "amd64";
-    extraCommands = ''
-      mkdir -m 0777 -p tmp
-    '';
   };
 }

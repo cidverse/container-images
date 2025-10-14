@@ -2,25 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1754292888,
-        "narHash": "sha256-1ziydHSiDuSnaiPzCQh1mRFBsM2d2yRX9I+5OPGEmIE=",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "lastModified": 1750133334,
-        "narHash": "sha256-urV51uWH7fVnhIvsZIELIYalMYsyr2FCalvlRTzqWRw=",
-=======
-        "lastModified": 1754937576,
-        "narHash": "sha256-3sWA5WJybUE16kIMZ3+uxcxKZY/JRR4DFBqLdSLBo7w=",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "lastModified": 1760139962,
+        "narHash": "sha256-4xggC56Rub3WInz5eD7EZWXuLXpNvJiUPahGtMkwtuc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-<<<<<<< HEAD
-        "rev": "ce01daebf8489ba97bd1609d185ea276efdeb121",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "rev": "36ab78dab7da2e4e27911007033713bab534187b",
-=======
-        "rev": "ddae11e58c0c345bf66efbddbf2192ed0e58f896",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "rev": "7e297ddff44a3cc93673bb38d0374df8d0ad73e4",
         "type": "github"
       },
       "original": {
@@ -32,25 +18,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1754523264,
-        "narHash": "sha256-ksZiQhu/5DYB5YP4Vs8dQmE2Tu1FpmekGdUhhHaLo4M=",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "lastModified": 1750288459,
-        "narHash": "sha256-P6RXhz1LW6hQpLtr5pxLXoWp8z3uHIFx6zELMdfIsqQ=",
-=======
-        "lastModified": 1755012041,
-        "narHash": "sha256-Vp3iHadBSQjsZebYnnNPeOhgGJD+PHOXlEK/UjUPPHo=",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "lastModified": 1760454928,
+        "narHash": "sha256-eFdYcjEKS7qcABq7wLe60+vG+G5YxZNoCMZ17rqL200=",
         "owner": "nixos",
         "repo": "nixpkgs",
-<<<<<<< HEAD
-        "rev": "1d4ff8b5420d93c74aee18ebf246b079eea9ae42",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "rev": "0e2d1a789c2b3c12a85b168f9e40428af00cacab",
-=======
-        "rev": "17f89d34001c91d37ad29950b1f55b90d950da73",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "rev": "603d100974b30fa148db8d3be24561d261bd7778",
         "type": "github"
       },
       "original": {
@@ -67,11 +39,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753966852,
-        "narHash": "sha256-YcSKmnc17Upb5HWvvCQVadWBDDR7YH8GJRRIKobVOX0=",
+        "lastModified": 1760457650,
+        "narHash": "sha256-qPIdk6qvItgNlsjmVAj9eBDIKTtmZjueHv/ZWSgM9ck=",
         "owner": "philippheuer",
         "repo": "nixpkgs",
-        "rev": "bbd2d8fb30392a082159f162b390836e8e188726",
+        "rev": "8c828de3d88e3da8791b7aa512bf921a597652cd",
         "type": "github"
       },
       "original": {
@@ -83,25 +55,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1754214453,
-        "narHash": "sha256-Q/I2xJn/j1wpkGhWkQnm20nShYnG7TI99foDBpXm1SY=",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "lastModified": 1750134718,
-        "narHash": "sha256-v263g4GbxXv87hMXMCpjkIxd/viIF7p3JpJrwgKdNiI=",
-=======
-        "lastModified": 1754725699,
-        "narHash": "sha256-iAcj9T/Y+3DBy2J0N+yF9XQQQ8IEb5swLFzs23CdP88=",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "lastModified": 1760284886,
+        "narHash": "sha256-TK9Kr0BYBQ/1P5kAsnNQhmWWKgmZXwUQr4ZMjCzWf2c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-<<<<<<< HEAD
-        "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
-||||||| parent of 897d047e (chore: bump flake.lock, set default gid to 0)
-        "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
-=======
-        "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
->>>>>>> 897d047e (chore: bump flake.lock, set default gid to 0)
+        "rev": "cf3f5c4def3c7b5f1fc012b3d839575dbe552d43",
         "type": "github"
       },
       "original": {

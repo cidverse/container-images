@@ -8,7 +8,7 @@
 
 let
   containerSupport = import (self + "/lib/container-support.nix") { inherit pkgs; };
-  rootPackage = pkgs-master.semgrep;
+  rootPackage = pkgs-unstable.semgrep;
 
   gitConfig = pkgs.writeTextFile {
     name = "gitconfig";

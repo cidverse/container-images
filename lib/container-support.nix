@@ -60,6 +60,7 @@
         volumes ? { },
         env ? [ ],
         extendPath ? [ ],
+        ciMode ? false,
         ...
       }@args:
       let
@@ -79,14 +80,10 @@
 
         contents = contents;
         extraCommands =
-          extraCommands
-          + ''
-            chmod -R g=u tmp var home usr/local/bin
-            chmod 777 tmp
-          '';
-        fakeRootCommands = ''
-          chown -R 1001 /home/appuser
-        '';
+          ''
+            mkdir -m 777 -p home/appuser tmp var home usr/local/bin
+          '' +
+          extraCommands;
         config = {
           Entrypoint = entrypoint;
           Cmd = defaultCmd;

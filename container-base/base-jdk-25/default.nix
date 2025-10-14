@@ -7,17 +7,15 @@
 
 let
   containerSupport = import (self + "/lib/container-support.nix") { inherit pkgs; };
-  rootPackage = pkgs.python314;
+  rootPackage = pkgs-unstable.jdk25;
+  rootPackageVersion = builtins.replaceStrings ["+"] ["-patch."] rootPackage.version;
 in
 {
   image-amd64 = containerSupport.buildImage {
-    name = "build-python";
-    version = rootPackage.version;
+    name = "base-jdk25";
+    version = rootPackageVersion;
     rootPackage = rootPackage;
-    additionalPackages = [
-      pkgs.python314Packages.pip
-      pkgs.python314Packages.pipx
-    ];
+    additionalPackages = [ ];
     maxLayers = 80;
     arch = "amd64";
   };

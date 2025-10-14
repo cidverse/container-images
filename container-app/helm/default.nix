@@ -24,10 +24,10 @@ in
       pkgs.git
     ];
     extraCommands = ''
-      mkdir -m 0770 -p home/appuser/.kube
-      mkdir -m 0770 -p home/appuser/.config/helm
-      mkdir -m 0770 -p home/appuser/.local/share/helm
-      mkdir -m 0770 -p home/appuser/.cache/helm
+      mkdir -m 777 -p home/appuser/.kube
+      mkdir -m 777 -p home/appuser/.config/helm
+      mkdir -m 777 -p home/appuser/.local/share/helm
+      mkdir -m 777 -p home/appuser/.cache/helm
     '';
     arch = "amd64";
   };
