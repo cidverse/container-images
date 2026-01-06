@@ -98,6 +98,6 @@ in
   uv = pkgs.callPackage ./container-app/uv commonArgs;
   wrangler = pkgs.callPackage ./container-app/wrangler commonArgs;
   zizmor = pkgs.callPackage ./container-app/zizmor commonArgs;
-  primecodegen-app = pkgs.callPackage ./container-app/primecodegen-app commonArgs;
+  primecodegen = pkgs.callPackage ./container-app/primecodegen commonArgs;
   qodana = pkgs.callPackage ./container-app/qodana commonArgs;
 }
