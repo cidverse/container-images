@@ -23,5 +23,8 @@ in
         pkgs.google-java-format
     ];
     arch = "amd64";
+    volumes = {
+      "/tmp" = {};
+    };
   };
 }

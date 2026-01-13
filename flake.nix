@@ -4,7 +4,7 @@
   inputs = {
     # official nixpkgs
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-25.05";
+      url = "github:nixos/nixpkgs/nixos-25.11";
     };
     nixpkgs-unstable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
@@ -40,9 +40,24 @@
       legacyPackages = forAllSystems (
         system:
         import ./default.nix {
-          pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
-          pkgs-unstable = import nixpkgs-unstable { inherit system; config = { allowUnfree = true; }; };
-          pkgs-master = import nixpkgs-master { inherit system; config = { allowUnfree = true; }; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
+          pkgs-master = import nixpkgs-master {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
           pkgs-ph = import nixpkgs-philippheuer { };
           self = self;
           inputs = inputs;

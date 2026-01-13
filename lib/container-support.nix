@@ -6,14 +6,6 @@
   # buildImage
   buildImage =
     let
-      createDirs = pkgs.runCommand "tmp" { } ''
-        mkdir $out
-        mkdir -m 0770 $out/tmp
-        mkdir -m 0770 $out/var
-        mkdir -m 0770 -p $out/usr/local/bin
-        mkdir -m 0770 -p $out/home/appuser
-      '';
-
       microBasePackages = [
         pkgs.dockerTools.binSh # /bin/sh
         pkgs.dockerTools.usrBinEnv # /usr/bin/env
@@ -21,7 +13,6 @@
         pkgs.fakeNss # Provide a /etc/passwd and /etc/group with root/nobody
         pkgs.iana-etc # /etc/services and related files
         pkgs.tzdata # Timezone data
-        createDirs
       ];
       minimalBasePackages = [
         pkgs.coreutils # Core utilities like ls, cat, etc.
@@ -81,7 +72,7 @@
         contents = contents;
         extraCommands =
           ''
-            mkdir -m 777 -p home/appuser tmp var home usr/local/bin
+            mkdir -m 1777 -p home/appuser tmp var home usr/local/bin
           '' +
           extraCommands;
         config = {
