@@ -100,4 +100,5 @@ in
   zizmor = pkgs.callPackage ./container-app/zizmor commonArgs;
   primecodegen = pkgs.callPackage ./container-app/primecodegen commonArgs;
   qodana = pkgs.callPackage ./container-app/qodana commonArgs;
+  opencode = pkgs.callPackage ./container-app/opencode commonArgs;
 }
