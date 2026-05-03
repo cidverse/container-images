@@ -16,7 +16,10 @@ in
     name = "sonarscanner-cli";
     version = rootPackage.version;
     rootPackage = rootPackage;
-    additionalPackages = [ pkgs.jdk21 ];
+    additionalPackages = [
+      pkgs.jdk21
+      pkgs.nodejs_24
+    ];
     env = [
       "JAVA_HOME=${pkgs.jdk21}/lib/openjdk"
     ];
