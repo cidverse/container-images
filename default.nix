@@ -78,6 +78,7 @@ in
   oras = pkgs.callPackage ./container-app/oras commonArgs;
   osv-scanner = pkgs.callPackage ./container-app/osv-scanner commonArgs;
   pipenv = pkgs.callPackage ./container-app/pipenv commonArgs;
+  photon = pkgs.callPackage ./container-app/photon commonArgs;
   podman = pkgs.callPackage ./container-app/podman commonArgs;
   poetry = pkgs.callPackage ./container-app/poetry commonArgs;
   rekor-cli = pkgs.callPackage ./container-app/rekor-cli commonArgs;
