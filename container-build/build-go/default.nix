@@ -7,7 +7,7 @@
 
 let
   containerSupport = import (self + "/lib/container-support.nix") { inherit pkgs; };
-  rootPackage = pkgs-unstable.go_1_25;
+  rootPackage = pkgs.go_1_26;
 in
 {
   image-amd64 = containerSupport.buildImage {
