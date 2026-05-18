@@ -49,6 +49,10 @@ in
       pkgs.fd
       pkgs.jq
       pkgs.yq
+
+      # tool runners
+      pkgs.gnumake
+      pkgs.just
     ];
     extraCommands = ''
       mkdir -m 0770 -p home/appuser

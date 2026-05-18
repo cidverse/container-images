@@ -65,6 +65,7 @@ in
   helmfile = pkgs.callPackage ./container-app/helmfile commonArgs;
   hugo = pkgs.callPackage ./container-app/hugo commonArgs;
   jdk = pkgs.callPackage ./container-app/jdk commonArgs;
+  kube-state-metrics = pkgs.callPackage ./container-app/kube-state-metrics commonArgs;
   kubectl = pkgs.callPackage ./container-app/kubectl commonArgs;
   kubeseal = pkgs.callPackage ./container-app/kubeseal commonArgs;
   liquibase = pkgs.callPackage ./container-app/liquibase commonArgs;

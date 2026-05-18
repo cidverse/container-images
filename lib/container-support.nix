@@ -6,10 +6,25 @@
   # buildImage
   buildImage =
     let
+      # certificates
+      containerCaCertificates = pkgs.cacert.override {
+        extraCertificateFiles = [
+          #(pkgs.writeText "my-internal-root-ca.crt" ''
+          #  -----BEGIN CERTIFICATE-----
+          #  MIIFljCCA36gAwIBAgINAgO7buGoNi8aFJgvkDANBgkqhkiG9w0BAQsFADBHMQsw
+          #  ... your certificate content here ...
+          #  -----END CERTIFICATE-----
+          #'')
+          # Alternatively, point to a local repository file:
+          # ./certs/another-corporate-ca.crt
+        ];
+      };
+
+      # package sets
       microBasePackages = [
         pkgs.dockerTools.binSh # /bin/sh
         pkgs.dockerTools.usrBinEnv # /usr/bin/env
-        pkgs.dockerTools.caCertificates # SSL/TLS certificates
+        containerCaCertificates # SSL/TLS certificates
         pkgs.fakeNss # Provide a /etc/passwd and /etc/group with root/nobody
         pkgs.iana-etc # /etc/services and related files
         pkgs.tzdata # Timezone data
@@ -17,9 +32,9 @@
       minimalBasePackages = [
         pkgs.coreutils # Core utilities like ls, cat, etc.
         pkgs.glibc # Standard C library
-        pkgs.bashInteractive # Interactive bash shell
+        pkgs.glibcLocales # Locale data for glibc
+        pkgs.bash # Bash shell
       ];
-
       basePackageSets = {
         "micro" = microBasePackages;
         "minimal" = microBasePackages ++ minimalBasePackages;
@@ -45,7 +60,7 @@
         additionalPackages ? [ ],
         extraCommands ? "",
         maxLayers ? 120,
-        compressor ? "none", # "none", "gz","zstd"
+        compressor ? "zstd", # "none", "gz","zstd"
         user ? "1001",
         entrypoint ? null,
         volumes ? { },
