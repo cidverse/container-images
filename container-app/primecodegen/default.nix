@@ -18,6 +18,7 @@ in
     additionalPackages = [
         inputs.nixpkgs-philippheuer.packages.${pkgs.system}.primecodegen
         inputs.nixpkgs-philippheuer.packages.${pkgs.system}.oasdiff
+        inputs.nixpkgs-philippheuer.packages.${pkgs.system}.printing-press
         pkgs.openapi-generator-cli
         pkgs.redocly
         pkgs.google-java-format
