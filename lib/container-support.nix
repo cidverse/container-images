@@ -63,6 +63,7 @@
         compressor ? "zstd", # "none", "gz","zstd"
         user ? "1001",
         entrypoint ? null,
+        cmd ? null,
         volumes ? { },
         env ? [ ],
         extendPath ? [ ],
@@ -92,7 +93,7 @@
           extraCommands;
         config = {
           Entrypoint = entrypoint;
-          Cmd = defaultCmd;
+          Cmd = if cmd != null then cmd else defaultCmd;
 
           Env = [
             "HOME=/home/appuser"
