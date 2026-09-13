@@ -93,6 +93,7 @@ in
   skopeo = pkgs.callPackage ./container-app/skopeo commonArgs;
   slsa-verifier = pkgs.callPackage ./container-app/slsa-verifier commonArgs;
   sonarscanner-cli = pkgs.callPackage ./container-app/sonarscanner-cli commonArgs;
+  sshtunnel = pkgs.callPackage ./container-app/sshtunnel commonArgs;
   syft = pkgs.callPackage ./container-app/syft commonArgs;
   trivy = pkgs.callPackage ./container-app/trivy commonArgs;
   twitch-cli = pkgs.callPackage ./container-app/twitch-cli commonArgs;
