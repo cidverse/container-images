@@ -6,19 +6,29 @@
   # buildImage
   buildImage =
     let
-      # certificates
-      containerCaCertificates = pkgs.cacert.override {
-        extraCertificateFiles = [
-          #(pkgs.writeText "my-internal-root-ca.crt" ''
-          #  -----BEGIN CERTIFICATE-----
-          #  MIIFljCCA36gAwIBAgINAgO7buGoNi8aFJgvkDANBgkqhkiG9w0BAQsFADBHMQsw
-          #  ... your certificate content here ...
-          #  -----END CERTIFICATE-----
-          #'')
-          # Alternatively, point to a local repository file:
-          # ./certs/another-corporate-ca.crt
-        ];
-      };
+      containerCaCertificates =
+        let
+          baseCacert = pkgs.cacert.override {
+            extraCertificateFiles = [
+              #(pkgs.writeText "my-internal-root-ca.crt" ''
+              #  -----BEGIN CERTIFICATE-----
+              #  MIIFljCCA36gAwIBAgINAgO7buGoNi8aFJgvkDANBgkqhkiG9w0BAQsFADBHMQsw
+              #  ... your certificate content here ...
+              #  -----END CERTIFICATE-----
+              #'')
+              # Alternatively, point to a local repository file:
+              # ./certs/another-corporate-ca.crt
+            ];
+          };
+        in
+        # workaround for https://github.com/semgrep/semgrep/issues/11525
+        pkgs.symlinkJoin {
+          name = "container-ca-certificates";
+          paths = [ baseCacert ];
+          postBuild = ''
+            ln -s ca-bundle.crt $out/etc/ssl/certs/ca-certificates.crt
+          '';
+        };
 
       # package sets
       microBasePackages = [
@@ -86,11 +96,10 @@
         enableFakechroot = false;
 
         contents = contents;
-        extraCommands =
-          ''
-            mkdir -m 1777 -p home/appuser tmp var home usr/local/bin
-          '' +
-          extraCommands;
+        extraCommands = ''
+          mkdir -m 1777 -p home/appuser tmp var home usr/local/bin
+        ''
+        + extraCommands;
         config = {
           Entrypoint = entrypoint;
           Cmd = if cmd != null then cmd else defaultCmd;
@@ -98,9 +107,16 @@
           Env = [
             "HOME=/home/appuser"
             "DISPLAY=:0"
-          ] ++ env ++ (if builtins.length extendPath > 0 then [
-            "PATH=${builtins.concatStringsSep ":" extendPath}:${defaultPath}"
-          ] else []);
+          ]
+          ++ env
+          ++ (
+            if builtins.length extendPath > 0 then
+              [
+                "PATH=${builtins.concatStringsSep ":" extendPath}:${defaultPath}"
+              ]
+            else
+              [ ]
+          );
           ExposedPorts = { };
           Volumes = volumes;
           User = "${user}:0";
