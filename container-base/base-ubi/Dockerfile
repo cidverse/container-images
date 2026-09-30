@@ -1,13 +1,17 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
-# image=quay.io/cidverse/base-ubi
+# image=ghcr.io/cidverse/base-ubi
+
+# ubi base versions (both ARGs must stay before the first FROM to remain in scope for all FROM lines)
+# renovate: datasource=docker depName=registry.access.redhat.com/ubi10-micro
+ARG UBI_MICRO_VERSION=10.2-1787684489
+# renovate: datasource=docker depName=registry.access.redhat.com/ubi10-minimal
+ARG UBI_MINIMAL_VERSION=10.2-1790753097
 
 # ubi micro base
-# renovate: datasource=docker depName=registry.access.redhat.com/ubi10-micro
-ARG UBI_BASE_VERSION=10.2-1787684489
-FROM registry.access.redhat.com/ubi10-micro:$UBI_BASE_VERSION AS ubi-micro
+FROM registry.access.redhat.com/ubi10-micro:$UBI_MICRO_VERSION AS ubi-micro
 
 # ubi minimal
-FROM registry.access.redhat.com/ubi10-minimal:10.2-1790753097 AS ubi-minimal
+FROM registry.access.redhat.com/ubi10-minimal:$UBI_MINIMAL_VERSION AS ubi-minimal
 
 # image
 FROM scratch

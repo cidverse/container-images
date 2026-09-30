@@ -9,7 +9,7 @@ if [[ "${2:-}" == "-f" ]]; then
 fi
 
 # build image
-result=$(nix build .#${imageName}.image-amd64 --no-link --print-out-paths)
+result=$(nix build .#${imageName}.image-amd64 --no-link --print-out-paths --show-trace)
 
 # query image metadata
 name=$(skopeo inspect docker-archive:$result | jq -r '.Labels["io.github.cidverse.component"]')
