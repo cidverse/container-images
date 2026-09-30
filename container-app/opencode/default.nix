@@ -17,9 +17,11 @@ in
     rootPackage = rootPackage;
     additionalPackages = [
       # runtime
-      pkgs.jdk21
-      pkgs.nodejs_24
+      pkgs.jdk25
+      pkgs.nodejs_26
       pkgs.python315
+      pkgs.rustc
+      pkgs.cargo
 
       # nix
       pkgs.nix
@@ -37,6 +39,11 @@ in
       pkgs-unstable.nufmt
       pkgs-unstable.google-java-format
       pkgs-unstable.ktfmt
+      pkgs-unstable.rustfmt
+
+      # vcs
+      pkgs.git
+      pkgs-unstable.pre-commit
 
       # lint
       pkgs-unstable.pylint
@@ -46,9 +53,12 @@ in
       # tools
       pkgs.curl
       pkgs.ripgrep
+      pkgs-unstable.ast-grep
       pkgs.fd
       pkgs.jq
       pkgs.yq
+      pkgs.fzf
+      pkgs.gnused
 
       # tool runners
       pkgs.gnumake

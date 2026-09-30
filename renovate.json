@@ -9,8 +9,8 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": [
-        "registry.access.redhat.com/ubi9-micro",
-        "registry.access.redhat.com/ubi9-minimal",
+        "registry.access.redhat.com/ubi10-micro",
+        "registry.access.redhat.com/ubi10-minimal",
         "quay.io/cidverse/base-node"
       ],
       "matchUpdateTypes": ["minor", "patch"],
