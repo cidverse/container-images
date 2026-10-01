@@ -11,7 +11,7 @@ FROM ghcr.io/cidverse/base-ubi-build:${BASE_UBI_BUILD_VERSION} AS build
 
 ARG APP_VERSION
 # renovate: datasource=pypi depName=torch
-ARG TORCH_VERSION=2.14.0
+ARG TORCH_VERSION=2.14.1
 ARG TORCH_INDEX=cu130
 
 ENV PIP_NO_CACHE_DIR=1 \
