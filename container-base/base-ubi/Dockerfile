@@ -1,5 +1,6 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
 # image=ghcr.io/cidverse/base-ubi
+# publish-version-arg=UBI_MICRO_VERSION
 
 # ubi base versions (both ARGs must stay before the first FROM to remain in scope for all FROM lines)
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-micro

@@ -1,5 +1,6 @@
 # platforms=linux/amd64,linux/arm64/v8,linux/s390x,linux/ppc64le
 # image=ghcr.io/cidverse/base-ubi-build
+# publish-version-arg=UBI_BASE_VERSION
 
 # ubi minimal base
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-minimal
