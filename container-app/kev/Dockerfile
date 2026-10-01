@@ -1,18 +1,22 @@
 # platforms=linux/amd64
-# image=ghcr.io/cidverse/laya-cuda
+# image=ghcr.io/cidverse/kev
 
 # renovate: datasource=docker depName=ghcr.io/cidverse/base-ubi-build
 ARG BASE_UBI_BUILD_VERSION=10.2-1790753097
 # renovate: datasource=docker depName=ghcr.io/cidverse/base-ubi
 ARG BASE_UBI_VERSION=10.2-1787684489
-# renovate: datasource=github-releases depName=NandhaKishorM/laya
-ARG APP_VERSION=0.3.23
+# Kev 1.0 release of https://github.com/jaredpalmer/kev (models pull at runtime,
+# so the image version tracks the server release, not the weights).
+ARG APP_VERSION=1.0
 FROM ghcr.io/cidverse/base-ubi-build:${BASE_UBI_BUILD_VERSION} AS build
 
 ARG APP_VERSION
-# renovate: datasource=pypi depName=torch
-ARG TORCH_VERSION=2.14.1
-ARG TORCH_INDEX=cu130
+# kev requires torch>=2.6,<2.9, so this stays on the 2.8 line (cu128 is the last
+# index carrying it) even though newer torch exists. No renovate annotation on
+# purpose: an automated bump past 2.9 would break the kev dependency resolver.
+ARG TORCH_VERSION=2.8.0
+ARG TORCH_INDEX=cu128
+ARG KEV_REF=kev-1.0
 
 ENV PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
@@ -20,7 +24,7 @@ ENV PIP_NO_CACHE_DIR=1 \
 
 # System packages needed to build/run the venv (gcc/make/git already in base-ubi-build).
 # python3-devel is deliberately NOT installed: it lives in CodeReady Builder
-# (needs a subscribed host), and laya is pure Python with prebuilt manylinux
+# (needs a subscribed host), and kev is pure Python with prebuilt manylinux
 # wheels for every dependency, so no compiler headers are required.
 RUN microdnf install -y \
         python3.12 \
@@ -32,23 +36,29 @@ RUN python3.12 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH" \
     VIRTUAL_ENV="/opt/venv"
 
-# Install torch from the requested wheel index, verify it matches the index,
-# then install laya[serve] from the exact upstream release tag.
+# torch first (from the CUDA wheel index), then kev[serve] from the pinned release.
+# PyPI stays available as an extra index for kev's non-torch dependencies
+# (e.g. typesafe-sdk); the already-installed torch satisfies kev's torch range.
 RUN pip install --upgrade pip setuptools wheel \
     && pip install "torch==${TORCH_VERSION}" --index-url "https://download.pytorch.org/whl/${TORCH_INDEX}" \
-    && git clone --depth 1 --branch "v${APP_VERSION}" https://github.com/NandhaKishorM/laya.git /src/laya \
-    && python /src/laya/docker/check_torch.py "${TORCH_INDEX}" \
-    && pip install "/src/laya[serve]" \
-    && pip check
+    && pip install "kev[serve] @ git+https://github.com/jaredpalmer/kev.git@${KEV_REF}" \
+        --index-url "https://download.pytorch.org/whl/${TORCH_INDEX}" \
+        --extra-index-url "https://pypi.org/simple" \
+    && pip check \
+    && python -c "import kev.serve"
 
-# App layout (mirrors upstream runtime stage): user, model cache, entrypoint, examples.
-RUN groupadd --gid 10001 laya \
-    && useradd --uid 10001 --gid laya --create-home --home-dir /home/laya laya \
-    && mkdir -p /home/laya/.cache/huggingface /opt/laya/examples /usr/share/doc/laya \
-    && chmod 777 /home/laya/.cache/huggingface \
-    && cp -a /src/laya/docker/entrypoint.py /opt/laya/entrypoint.py \
-    && cp -a /src/laya/examples/docker/. /opt/laya/examples/ \
-    && cp -a /src/laya/LICENSE /usr/share/doc/laya/LICENSE
+# Fused DeltaNet kernels for the Qwen3.5 models (4b/9b); optional - the server
+# falls back to the pure-torch path without them, just slower.
+RUN pip install flash-linear-attention \
+    || echo "WARNING: flash-linear-attention unavailable for this torch/python combo, serving without fused kernels"
+
+# App layout: user, model cache, entrypoint wrapper.
+RUN groupadd --gid 10001 kev \
+    && useradd --uid 10001 --gid kev --create-home --home-dir /home/kev kev \
+    && mkdir -p /home/kev/.cache/huggingface /opt/kev \
+    && chmod 777 /home/kev/.cache/huggingface \
+    && printf '#!/bin/sh\nset -eu\nexec python -m kev.serve --run "${KEV_MODEL:-jaredpalmer/kev-4b}" --host "${KEV_HOST:-0.0.0.0}" --port "${KEV_PORT:-8008}" "$@"\n' > /opt/kev/entrypoint.sh \
+    && chmod +x /opt/kev/entrypoint.sh
 
 # Stage every system file the venv interpreter needs at runtime into /runtime-root.
 # base-ubi (ubi-micro) has no package manager, so the runtime stage COPYs these over.
@@ -117,48 +127,36 @@ RUN set -euo pipefail; \
 
 FROM ghcr.io/cidverse/base-ubi:${BASE_UBI_VERSION}
 
-LABEL org.opencontainers.image.title="Laya (CUDA)" \
-      org.opencontainers.image.source="https://github.com/NandhaKishorM/laya" \
+LABEL org.opencontainers.image.title="Kev decision-model server" \
+      org.opencontainers.image.source="https://github.com/jaredpalmer/kev" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      io.github.cidverse.component="laya-cuda"
+      io.github.cidverse.component="kev"
 
 COPY --from=build /runtime-root/ /
 COPY --from=build /opt/venv /opt/venv
-COPY --from=build /home/laya /home/laya
-COPY --from=build /opt/laya /opt/laya
-COPY --from=build /usr/share/doc/laya /usr/share/doc/laya
+COPY --from=build /home/kev /home/kev
+COPY --from=build /opt/kev /opt/kev
 
-# torch 2.14 swaps some eager CUDA ops (bmm, topk, sum, norms) for Triton kernels
-# compiled on first inference, which needs a C compiler this image does not
-# carry; the stock kernels give the same answers at the same latency (upstream #365).
 ENV PATH="/opt/venv/bin:$PATH" \
     VIRTUAL_ENV="/opt/venv" \
-    TORCH_DISABLE_NATIVE_JIT=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    USE_TF=0 \
-    USE_TORCH=1 \
     TOKENIZERS_PARALLELISM=false \
     OMP_NUM_THREADS=4 \
-    LAYA_DEVICE=cuda \
-    LAYA_HOST=0.0.0.0 \
-    LAYA_PORT=8000 \
-    LAYA_MODEL=auto \
-    LAYA_REQUEST_FILE=/opt/laya/examples/request.json \
-    HF_HOME=/home/laya/.cache/huggingface \
-    HF_HUB_OFFLINE=0 \
-    NVIDIA_VISIBLE_DEVICES=all \
-    NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    KEV_MODEL=jaredpalmer/kev-4b \
+    KEV_HOST=0.0.0.0 \
+    KEV_PORT=8008 \
+    HF_HOME=/home/kev/.cache/huggingface \
+    HF_HUB_OFFLINE=0
 
-RUN mkdir -p /home/laya/.cache/huggingface \
-    && chmod -R 777 /home/laya/.cache/huggingface \
-    && chgrp -R 0 /home/laya /opt/laya \
-    && chmod -R g=u /home/laya /opt/laya
+RUN mkdir -p /home/kev/.cache/huggingface \
+    && chmod -R 777 /home/kev/.cache/huggingface \
+    && chgrp -R 0 /home/kev /opt/kev \
+    && chmod -R g=u /home/kev /opt/kev
 
-USER laya
-WORKDIR /home/laya
+USER kev
+WORKDIR /home/kev
 
-EXPOSE 8000
+EXPOSE 8008
 
-ENTRYPOINT ["python", "/opt/laya/entrypoint.py"]
-CMD ["laya-serve"]
+ENTRYPOINT ["/opt/kev/entrypoint.sh"]

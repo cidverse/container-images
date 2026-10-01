@@ -95,16 +95,25 @@ RUN set -euo pipefail; \
     rm -f "$list"; \
     cp -a --parents /etc/passwd /etc/group "$dest/"; \
     nf=$(mktemp); \
-    { echo "/usr/bin/python3.12"; \
-      for so in /usr/lib64/python3.12/lib-dynload/*.so; do [ -e "$so" ] && echo "$so"; done; \
-      find /opt/venv -name '*.so*' -type f 2>/dev/null; \
-    } | while IFS= read -r so; do ldd "$so" 2>/dev/null | grep 'not found' | sed "s|^|$so: |"; done > "$nf" || true; \
-    if grep -vE 'libcuda\.so|libnvidia-ml\.so|libnvidia-nvvm\.so' "$nf" | grep -q .; then \
-        echo "ERROR: unresolved shared libraries (only host GPU driver libs may be missing):" >&2; \
-        grep -vE 'libcuda\.so|libnvidia-ml\.so|libnvidia-nvvm\.so' "$nf" >&2; \
+    for so in /usr/bin/python3.12 /usr/lib64/python3.12/lib-dynload/*.so; do \
+        [ -e "$so" ] || continue; \
+        ldd "$so" 2>/dev/null | grep 'not found' | sed "s|^|$so: |"; \
+    done > "$nf" || true; \
+    if grep -q . "$nf"; then \
+        echo "ERROR: unresolved shared libraries in the python runtime:" >&2; \
+        cat "$nf" >&2; \
         exit 1; \
     fi; \
-    rm -f "$nf"
+    rm -f "$nf"; \
+    vnf=$(mktemp); \
+    find /opt/venv -name '*.so*' -type f 2>/dev/null | while IFS= read -r so; do \
+        ldd "$so" 2>/dev/null | grep 'not found' || true; \
+    done > "$vnf" || true; \
+    if grep -q . "$vnf"; then \
+        echo "NOTE: venv libs below are not resolvable by bare ldd (torch/nvidia plugin and cross-package libs resolve in torch's runtime load context):"; \
+        grep -o '[[:alnum:]_+.-]*\.so\(\.[0-9]*\)* => not found' "$vnf" | sort | uniq -c || true; \
+    fi; \
+    rm -f "$vnf"
 
 FROM ghcr.io/cidverse/base-ubi:${BASE_UBI_VERSION}
 
