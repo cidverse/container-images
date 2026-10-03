@@ -6,7 +6,7 @@ ARG BASE_UBI_BUILD_VERSION=10.2-1790753097
 # renovate: datasource=docker depName=ghcr.io/cidverse/base-ubi
 ARG BASE_UBI_VERSION=10.2-1787684489
 # renovate: datasource=github-releases depName=NandhaKishorM/laya
-ARG APP_VERSION=0.3.23
+ARG APP_VERSION=0.3.26
 FROM ghcr.io/cidverse/base-ubi-build:${BASE_UBI_BUILD_VERSION} AS build
 
 ARG APP_VERSION
