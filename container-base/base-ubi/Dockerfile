@@ -4,7 +4,7 @@
 
 # ubi base versions (both ARGs must stay before the first FROM to remain in scope for all FROM lines)
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-micro
-ARG UBI_MICRO_VERSION=10.2-1787684489
+ARG UBI_MICRO_VERSION=10.2-1791441953
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-minimal
 ARG UBI_MINIMAL_VERSION=10.2-1791346265
 
