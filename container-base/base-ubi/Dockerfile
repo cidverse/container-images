@@ -6,7 +6,7 @@
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-micro
 ARG UBI_MICRO_VERSION=10.2-1791441953
 # renovate: datasource=docker depName=registry.access.redhat.com/ubi10-minimal
-ARG UBI_MINIMAL_VERSION=10.2-1791346265
+ARG UBI_MINIMAL_VERSION=10.2-1791444377
 
 # ubi micro base
 FROM registry.access.redhat.com/ubi10-micro:$UBI_MICRO_VERSION AS ubi-micro
