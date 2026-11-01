@@ -45,6 +45,7 @@ in
   ansible-lint = pkgs.callPackage ./container-app/ansible-lint commonArgs;
   appinspector = pkgs.callPackage ./container-app/appinspector commonArgs;
   aws = pkgs.callPackage ./container-app/aws commonArgs;
+  betterleaks = pkgs.callPackage ./container-app/betterleaks commonArgs;
   buildah = pkgs.callPackage ./container-app/buildah commonArgs;
   codecov-cli = pkgs.callPackage ./container-app/codecov-cli commonArgs;
   cosign = pkgs.callPackage ./container-app/cosign commonArgs;

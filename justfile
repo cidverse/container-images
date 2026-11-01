@@ -27,6 +27,7 @@ publish-all:
     scripts/publish.sh "ansible-lint" || true
     scripts/publish.sh "appinspector" || true
     scripts/publish.sh "aws" || true
+    scripts/publish.sh "betterleaks" || true
     scripts/publish.sh "buildah" || true
     scripts/publish.sh "codecov-cli" || true
     scripts/publish.sh "cosign" || true
@@ -81,3 +82,6 @@ publish-all:
     scripts/publish.sh "opencode" || true
     # app images
     scripts/publish.sh "photon" || true
+    scripts/publish.sh "laya" || true
+    scripts/publish.sh "laya-cuda" || true
+    scripts/publish.sh "kev" || true
