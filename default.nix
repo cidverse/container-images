@@ -59,6 +59,7 @@ in
   go-junit-report = pkgs.callPackage ./container-app/go-junit-report commonArgs;
   gocover-cobertura = pkgs.callPackage ./container-app/gocover-cobertura commonArgs;
   gosec = pkgs.callPackage ./container-app/gosec commonArgs;
+  gotestsum = pkgs.callPackage ./container-app/gotestsum commonArgs;
   golangci-lint = pkgs.callPackage ./container-app/golangci-lint commonArgs;
   grype = pkgs.callPackage ./container-app/grype commonArgs;
   hadolint = pkgs.callPackage ./container-app/hadolint commonArgs;

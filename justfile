@@ -39,6 +39,7 @@ publish-all:
     scripts/publish.sh "gitleaks" || true
     scripts/publish.sh "glab" || true
     scripts/publish.sh "gosec" || true
+    scripts/publish.sh "gotestsum" || true
     scripts/publish.sh "golangci-lint" || true
     scripts/publish.sh "grype" || true
     scripts/publish.sh "hadolint" || true
