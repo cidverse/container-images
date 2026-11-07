@@ -57,8 +57,12 @@ in
       pkgs.fd
       pkgs.jq
       pkgs.yq
+      pkgs-unstable.duckdb
       pkgs.fzf
       pkgs.gnused
+
+      # ai
+      pkgs-unstable.codegraph
 
       # tool runners
       pkgs.gnumake

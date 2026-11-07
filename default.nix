@@ -106,4 +106,5 @@ in
   primecodegen = pkgs.callPackage ./container-app/primecodegen commonArgs;
   qodana = pkgs.callPackage ./container-app/qodana commonArgs;
   opencode = pkgs.callPackage ./container-app/opencode commonArgs;
+  claude = pkgs.callPackage ./container-app/claude commonArgs;
 }

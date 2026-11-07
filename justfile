@@ -81,6 +81,7 @@ publish-all:
     scripts/publish.sh "wrangler" || true
     scripts/publish.sh "zizmor" || true
     scripts/publish.sh "opencode" || true
+    scripts/publish.sh "claude" || true
     # app images
     scripts/publish.sh "photon" || true
     scripts/publish.sh "laya" || true
